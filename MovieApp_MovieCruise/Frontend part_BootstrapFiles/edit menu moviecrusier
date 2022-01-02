@@ -1,0 +1,271 @@
+<%@ Page Title="" Language="C#" MasterPageFile="~/Site2.Master" AutoEventWireup="true" CodeBehind="EditMovie.aspx.cs" Inherits="MovieCrusier.EditMovie" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <style type="text/css">
+
+        .auto-style2 {
+
+            margin-left: 3px;
+
+        height: 340px;
+
+    }
+
+        .auto-style5 {
+
+            width: 381px;
+
+        }
+
+        .auto-style6 {
+
+            height: 40px;
+
+            width: 381px;
+
+        }
+
+        .auto-style7 {
+
+            width: 381px;
+
+            height: 15px;
+
+        }
+
+    </style>
+
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <p>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/MovieListAdmin.aspx?edit=yes">Movie</asp:HyperLink>
+
+    </p>
+
+        <script type="text/javascript" src="js/script.js"></script>
+
+    <body>
+
+                     <form method="post" action="EditMovieStatus.aspx" name="form1" onsubmit="return validateData()">
+
+ 
+
+ 
+
+                     <table class="auto-style2">
+
+                     <tr>
+
+                           <td id="p7" class="auto-style5">Edit Movie</td>
+
+                     </tr>
+
+                     <tr>
+
+                           <td colspan="4">
+
+                           <label for="txttitle"><b>Title</b></label>
+
+                           <asp:TextBox class="text-box-title" id="txttitle" runat="server" size="100"></asp:TextBox>
+
+                           <td id="errtitle" class="errmsg"></td></td><br>
+
+                     </tr>
+
+                     <tr>
+
+                           <td class="auto-style5"><label for="txtprice"><b>Gross($)</b></label><br>
+
+                           <asp:TextBox class= "text-box" id="txtprice" name="price" runat="server"></asp:TextBox>
+
+                           <td id="errprice" class="errmsg"></td><td><br>
+
+                           <td><b>Active</b><br>
+
+                           <label for="rdbyes"><asp:RadioButton runat="server" class="radio" id="rdbyes" name= "button" Text="Yes"/></label>
+
+               <label for="rdbno"><asp:RadioButton runat="server" class="radio" id="rdbno" name= "button" Text="No"/></label></td>
+
+ 
+
+                           <td id="errbutton" class="errmsg"></td></td>
+
+                           <td><label for="txtDateOfLaunch"><b>Date of Launch:</b></label><br>
+
+                <asp:TextBox class="text-box"  id="txtDateOfLaunch" runat="server" TextMode="DateTime" /></td>
+
+ 
+
+                           <td><label for="ddlcategory"><b>Category:</b></label><br>
+
+                                  <asp:DropDownList  ID="ddlcategory" runat="server"  >
+
+                     <asp:ListItem Text="Select" value="Select"></asp:ListItem>
+
+                     <asp:ListItem Text="Main Course" value="Main Course"></asp:ListItem>
+
+                     <asp:ListItem Text="Starters" value="Starters"></asp:ListItem>
+
+                     <asp:ListItem Text="Dessert" value="Dessert"></asp:ListItem>
+
+                     <asp:ListItem Text="Drinks" value="Drinks"></asp:ListItem>
+
+                     </asp:DropDownList>
+
+ 
+
+                           <td id="errcat" class="errmsg"></td></td>
+
+                     </tr>
+
+                        <tr><td class="auto-style6"><h4><label for="CheckBox1"><asp:CheckBox ID="CheckBox1" runat="server" Text="Free Delivery" /></h4></label></td></tr>
+
+                     <tr><td class="auto-style7">
+
+               
+
+                 <tr><td class="auto-style5"> <asp:Button ID="Button1" runat="server" Text="Save" BackColor="#305496" BorderStyle="None" CssClass="auto-style1" ForeColor="White" Height="48px" OnClick="Button1_Click" Width="100px" ValidateRequestMode="Enabled" /></td></tr>
+
+ 
+
+                     </table>
+
+              </form>
+
+        </body>
+
+      
+
+</asp:Content>
+
+ 
+
+ 
+
+using System;
+
+using System.Collections.Generic;
+
+using System.Linq;
+
+using System.Web;
+
+using System.Web.UI;
+
+using System.Web.UI.WebControls;
+
+using Com.Cognizant.MovieCruiser.Dao;
+
+using Com.Cognizant.MovieCrusier.Dao;
+
+using Com.Cognizant.MovieCrusier.Model;
+
+using Com.Cognizant.MovieCrusier.Utility;
+
+ 
+
+namespace MovieCrusier
+
+{
+
+    public partial class EditMovie : System.Web.UI.Page
+
+    {
+
+        protected void Page_Load(object sender, EventArgs e)
+
+        {
+
+            if (!this.IsPostBack)
+
+            {
+
+                MovieDaoCollection obj = Session["menu"] as MovieDaoCollection;
+
+                long id = Convert.ToInt64(Request.QueryString["Id"]);
+
+                ViewState["Id"] = id;
+
+                Com.Cognizant.MovieCrusier.Model.MovieItem item = obj.GetMovieItem(id);
+
+                txttitle.Text = item.Title;
+
+                txtprice.Text = item.Boxoffice.ToString();
+
+                if (item.Active)
+
+                    rdbyes.Checked = true;
+
+                else
+
+                    rdbno.Checked = true;
+
+                if (item.Hasteaser)
+
+                    CheckBox1.Checked = true;
+
+                else
+
+                    CheckBox1.Checked = false;
+
+                txtDateOfLaunch.Text = item.DateOfLaunch.ToShortDateString();
+
+                ddlcategory.Text = item.Genre;
+
+ 
+
+            }
+
+ 
+
+ 
+
+        }
+
+ 
+
+        protected void Button1_Click(object sender, EventArgs e)
+
+        {
+
+            MovieDaoCollection obj = Session["menu"] as MovieDaoCollection;
+
+            Com.Cognizant.MovieCrusier.Model.MovieItem menu = new Com.Cognizant.MovieCrusier.Model.MovieItem();
+
+            menu.Id = Convert.ToInt64(ViewState["Id"]);
+
+            menu.Title = txttitle.Text;
+
+            menu.Boxoffice = Convert.ToSingle(txtprice.Text);
+
+            if (rdbyes.Checked) menu.Active = true;
+
+            if (rdbno.Checked) menu.Active = true;
+
+            DateUtility date1 = new DateUtility();
+
+            menu.DateOfLaunch = Convert.ToDateTime(txtDateOfLaunch.Text);
+
+            menu.Genre = ddlcategory.Text;
+
+            obj.ModifyMovieItem(menu);
+
+            Session["menu"] = obj;
+
+ 
+
+            Response.Redirect("EditMovieStatus.aspx");
+
+ 
+
+        }
+
+    }
+
+}
