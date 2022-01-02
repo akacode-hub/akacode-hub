@@ -1,0 +1,1350 @@
+App module.ts
+
+import { BrowserModule } from '@angular/platform-browser';
+
+import { NgModule } from '@angular/core';
+
+import {FormsModule} from"@angular/forms";
+
+import{routes} from './app.router';
+
+import { AppComponent } from './app.component';
+
+import { AboutComponent } from './about/about.component';
+
+import { HomeComponent } from './home/home.component';
+
+import { GalleryComponent } from './gallery/gallery.component';
+
+import { RegistrationComponent } from './registration/registration.component';
+
+import { ContactusComponent } from './contactus/contactus.component';
+
+import {ReactiveFormsModule} from '@angular/forms';
+
+ 
+
+@NgModule({
+
+  declarations: [
+
+    AppComponent,
+
+    AboutComponent,
+
+    HomeComponent,
+
+    GalleryComponent,
+
+    RegistrationComponent,
+
+    ContactusComponent,
+
+   
+
+    
+
+  ],
+
+  imports: [
+
+    BrowserModule,
+
+    FormsModule,
+
+    ReactiveFormsModule,
+
+    routes
+
+   
+
+  ],
+
+  providers: [],
+
+  bootstrap: [AppComponent]
+
+})
+
+export class AppModule { }
+
+ 
+
+ 
+
+app router ts
+
+import{ModuleWithProviders} from '@angular/core';
+
+import{Routes,RouterModule} from '@angular/router'; //module for implementing routing
+
+import{AppComponent} from './app.component';
+
+import{AboutComponent}from './about/about.component';
+
+import { HomeComponent } from './home/home.component';
+
+import { RegistrationComponent } from './registration/registration.component';
+
+import { GalleryComponent } from './gallery/gallery.component';
+
+import { ContactusComponent } from'./contactus/contactus.component';
+
+ 
+
+export const router:Routes=[
+
+    {path:"",redirectTo :'home',pathMatch:'full'},
+
+    {path:'home',component:HomeComponent},
+
+    {path:'about',component:AboutComponent},
+
+    {path:'Registration',component:RegistrationComponent},
+
+    {path:'Gallery',component:GalleryComponent},
+
+    {path:'Contactus',component:ContactusComponent},  
+
+];
+
+ 
+
+export const routes:ModuleWithProviders=RouterModule.forRoot(router);
+
+ 
+
+app component ts
+
+import { Component } from '@angular/core';
+
+ 
+
+@Component({
+
+  selector: 'app-root',
+
+  templateUrl: './app.component.html',
+
+  styleUrls: ['./app.component.css']
+
+})
+
+export class AppComponent {
+
+  title = 'spaprojectroute';
+
+}
+
+ 
+
+ 
+
+App component html
+
+<div>
+
+    <body class="bg-img">
+
+<img  src="assets\images\image9.jpg"  style="width:100%" height="345">
+
+<div>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="background-color: white;">
+
+  
+
+ 
+
+  <ul class="nav navbar-nav">
+
+      <li>
+
+       <a routerLink="home"><h4><b>Home</b></h4></a>
+
+      </li>
+
+    <li>
+
+      <a routerLink="about"><h4><b>AboutUs</b></h4></a>
+
+    </li>
+
+    <li>
+
+        <a routerLink="Registration"><h4><b>Registration</b></h4></a>
+
+      </li>
+
+      <li>
+
+        <a routerLink="Gallery"><h4><b>Gallery</b></h4></a>
+
+      </li>
+
+      <li>
+
+          <a routerLink="Contactus"><h4><b>ContactUs</b></h4></a>
+
+      </li>
+
+ 
+
+  </ul>
+
+
+</nav>
+
+</div>
+
+<!--<body class="bg-img">-->
+
+<div>
+
+<router-outlet></router-outlet>
+
+</div>
+
+</body>
+
+<footer class="container-fluid text-center">
+
+ 
+
+    <!-- Copyright -->
+
+    <div ><h4>© 2019 Copyright.LiveVirtualClassroom</h4>
+
+    </div>
+
+    <!-- Copyright -->
+
+ 
+
+  </footer>
+
+</div>
+
+
+
+
+
+
+ 
+
+App component css
+
+h6 {
+
+    position: relative; /* Helps us control overlap */
+
+    padding-left: 25px; /* Creates space for the Phone Icon */
+
+    }
+
+ 
+
+  h6:after {
+
+    content: '\f095';
+
+    font-family: fontAwesome;
+
+    position: absolute;
+
+    left: 0; /* Adjust as needed */
+
+    top: 3px; /* Adjust as needed */
+
+    }
+
+ 
+
+    .row.content {height: 1500px}
+
+    .row.content {height: auto;}
+
+ 
+
+About component
+
+Component ts
+
+import { Component, OnInit } from '@angular/core';
+
+ 
+
+@Component({
+
+  selector: 'app-about',
+
+  templateUrl: './about.component.html',
+
+  styleUrls: ['./about.component.css']
+
+})
+
+export class AboutComponent implements OnInit {
+
+ 
+
+  constructor() { }
+
+ 
+
+  ngOnInit() {
+
+  }
+
+ 
+
+}
+
+ 
+
+ 
+
+Html
+
+<div class="container">
+
+<div class="panel panel-default">
+
+<div class="panel-body">
+
+<div class="banner">
+
+<div class="banner-start">
+
+<i class="fa fa-desktop" style="font-size:36px"></i><h1>What is a Virtual Classroom?</h1>
+
+</div>
+
+<div class="banner-middle">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<p>
+
+        A virtual classroom enables students to access quality teachers anywhere on the planet so long as they both have a reliable internet connection.
+
+        This can break down most of the common barriers to synchronous learning: cost, distance and timing.This includes
+
+        <br>
+
+        <br>
+
+        <br>
+
+       
+
+        <li>Video conferencing ability (so teachers and students can see each other)</li>
+
+        <li>Audio conferencing(so participants can hear each other)</li>
+
+        <li>Real-time text chat</li>
+
+        <li>Interactive online whiteboard (so users can interact on the same online page).</li>
+
+        <li>Library of learning materials (essential for providing more structured lessons)</li>
+
+        <li>Teacher tools and controls (just like in a physical classroom).</li>
+
+        </p>
+
+        <div class="panel panel-default">
+
+        <div class="panel-body">
+
+        <div class="banner">
+
+        <div class="banner-start">
+
+        <i class="fa fa-eye" style="font-size:36px"></i><h3>How different is a virtual classroom to a web-conference?</h3>
+
+        </div>
+
+        <div class="banner-middle">
+
+        </div>
+
+        </div>
+
+        </div>
+
+        </div>
+
+        <p>
+
+        An online classroom tends to have the important features of a video-conferencing tool but with additional features important for teachers.
+
+        The two key features that transform the teaching and learning experience are:
+
+        <br>
+
+        <br>
+
+                
+
+        <li>Interactive online whiteboard</li>
+
+        <li>Library of learning materials</li>
+
+        <li>Teacher tools and controls</li>
+
+        </p>
+
+</div>
+
+ 
+
+ 
+
+Css
+
+.banner {
+
+    display: flex;
+
+    align-items: center;
+
+  }
+
+ 
+
+  .banner-start h1 {
+
+    display: inline-block;
+
+  }
+
+ 
+
+  .banner-start i {
+
+    padding: 0 6px;
+
+  }
+
+  .banner-middle {
+
+    flex: 1;
+
+  }
+
+  
+
+  .banner-start h3 {
+
+    display: inline-block;
+
+  }
+
+ 
+
+ 
+
+Registration
+
+Html
+
+ 
+
+<div class="container">
+
+        <h2>&nbsp;&nbsp;Registration Form</h2>
+
+        <br>
+
+        <div class="row content">
+
+                              
+
+                <form #f="ngForm" novalidate (ngSubmit)="save(f.value,f.valid)" style="border:4px solid rgba(4, 20, 44, 0.61); padding: 30px;">
+
+               
+
+                <div class="form-group">
+
+                        <i class="fa fa-address-book-o" style="font-size:24px"></i><label>Name</label>
+
+                        <input type="text"  class="form-control" name="name" [(ngModel)]="user.name" #name="ngModel" required placeholder="Enter your name" required minlength="5">
+
+                       
+
+                        <small [hidden]="mail.valid || (mail.pristine && !f.submitted)" class="text-danger">
+
+                        Name is required (minimum 5 characters).
+
+                        </small>
+
+                    </div>
+
+         <br>
+
+         <div class="form-group">
+
+             <i class="fa fa-envelope-open" style="font-size:24px"></i> <label>Email</label>
+
+                           
+
+               <input type="text" ngModel [email]="true" class="form-control" name="mail" [(ngModel)]="user.mail" #mail="ngModel" required placeholder="Enter your email">
+
+                           
+
+                 <small [hidden]="mail.valid || (mail.pristine && !f.submitted)" class="text-danger">
+
+                Email is required (Please use proper format i.e. xyz@site.com).
+
+                </small>
+
+         </div>
+
+         <br>
+
+        <div class="form-group">
+
+            <i class="fa fa-genderless" style="font-size:24px"></i> <label>Gender</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+             <label class="radio-inline">
+
+             <i class="fa fa-mars" style="font-size:24px"></i>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+             <input type="radio" name="optradio" name="gender" [(ngModel)]="user.gender" #name="ngModel" value="Male" checked>Male
+
+             </label>
+
+             <label class="radio-inline">
+
+             <i class="fa fa-venus" style="font-size:24px"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <input type="radio" name="optradio" name="gender" [(ngModel)]="user.gender" #name="ngModel" value="Female" checked>Female
+
+             </label>
+
+        </div>
+
+        <br>
+
+         <div class="form-group">
+
+         <i class="fa fa-tags" style="font-size:24px"></i> <label for="sel1">Course:</label>
+
+             <select class="form-control" id="sel1" name="Course" [(ngModel)]="user.Course" #name="ngModel"  required placeholder="select anyone">
+
+                 <option>C++</option>
+
+                 <option>Angular</option>
+
+                 <option>python</option>
+
+                <option>ASP.NET</option>
+
+                <option>none</option>
+
+             </select>
+
+        </div>
+
+        <br>
+
+        <div class="form-group">
+
+                 <i class="fa fa-pencil-square" style="font-size:24px"></i> <label>Any Questions</label>
+
+                <input type="text"  class="form-control" name="questions" [(ngModel)]="user.questions" #name="ngModel" required placeholder="Enter your questions" required minlength="3">
+
+                                <small [hidden]="mail.valid || (mail.pristine && !f.submitted)" class="text-danger">
+
+                                    questions are used for improvement. Please help us in providing
+
+                                </small>
+
+                         </div>
+
+                         <br>
+
+                         <button type="button" class="btn btn-primary" item-width="60%">Submit</button>
+
+                         <br><br>
+
+                       
+
+                         Registration Details:
+
+                         {{f.value|json}}
+
+                    </form>
+
+                </div>
+
+       
+
+        
+
+       <br>
+
+       <br>
+
+</div>
+
+           
+
+ 
+
+           
+
+ 
+
+Css
+
+h6 {
+
+    position: relative; /* Helps us control overlap */
+
+    padding-left: 25px; /* Creates space for the Phone Icon */
+
+    }
+
+ 
+
+  h6:after {
+
+    content: '\f095';
+
+    font-family: fontAwesome;
+
+    position: absolute;
+
+    left: 0; /* Adjust as needed */
+
+    top: 3px; /* Adjust as needed */
+
+    }
+
+ 
+
+    .row.content {height: 1500px}
+
+    .row.content {height: auto;}
+
+ 
+
+Component ts
+
+import { Component, OnInit } from '@angular/core';
+
+import { User } from './user.interface';
+
+ 
+
+@Component({
+
+ 
+
+  selector: 'app-registration',
+
+  templateUrl: './registration.component.html',
+
+  styleUrls: ['./registration.component.css']
+
+})
+
+export class RegistrationComponent implements OnInit {
+
+ 
+
+  constructor() { }
+
+  public user:User;
+
+ 
+
+  ngOnInit() {
+
+    this.user={
+
+      name:"",
+
+      email:"",
+
+      gender:"",
+
+     course:"",
+
+     question:""
+
+    };
+
+  }
+
+  save(model:User,isValid:boolean){
+
+  
+
+    console.log(model,isValid);
+
+ 
+
+  }
+
+ 
+
+}
+
+ 
+
+User interface
+
+ 
+
+export interface User{
+
+    name:String;
+
+    gender:string;
+
+    email:String;
+
+    course:String;
+
+    question:String;
+
+}
+
+ 
+
+ 
+
+ 
+
+Contact us
+
+Html
+
+<div class="container">
+
+        <br>
+
+        <br><h1><b>Contact Us</b></h1>
+
+        <br>
+
+        <br>
+
+        <div class="row content">
+
+                <div class="col-sm-3 ">
+
+        <form [formGroup]="angForm" novalidate style="border:4px solid rgba(4, 20, 44, 0.945); padding: 30px;">
+
+            <div class="form-group">
+
+                <i class="fa fa-user-plus" style="font-size:24px"></i> <label>Name</label>
+
+                <input class="form-control" formControlName="name" type="text" placeholder="Enter your name">
+
+            </div>
+
+            <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)"class="alert alert-danger">
+
+                <div *ngIf="angForm.controls['name'].errors.required">
+
+                    Name is required.</div>
+
+                </div>
+
+                <br>
+
+                <br>
+
+   
+
+                <div class="form-group">
+
+                    <i class="fa fa-envelope-open" style="font-size:24px"></i> <label>Email</label>
+
+                    <input class="form-control"formControlName="email"type="text" placeholder="Enter your Email">
+
+                </div>
+
+                <div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)"class="alert alert-danger">
+
+                    <div *ngIf="angForm.controls['email'].errors.required">Email is Required</div>
+
+                </div>
+
+                <br>
+
+                <br>
+
+                <div class="form-group">
+
+                        <i class="fa fa-phone" style="font-size:24px"></i> <label>Phone No</label>
+
+                        <input class="form-control" formControlName="phoneno" type="text" placeholder="Write your Mobile Number">
+
+                        </div>
+
+                    <div *ngIf="angForm.controls['phoneno'].invalid && (angForm.controls['phoneno'].dirty||angForm.controls['phoneno'].touched)" class="alert alert-danger">
+
+                            <div *ngIf="angForm.controls['phoneno'].errors.required"> Phone number is required</div>
+
+                              Write phoneno in required format
+
+                    </div>
+
+                        <br>
+
+                        <br>
+
+                        <div class="form-group">
+
+                                <i class="fa fa-address-card" style="font-size:24px"></i><label>Address</label>
+
+                                <input class="form-control"formControlName="address"type="text" placeholder="Enter your address">
+
+                        </div>
+
+                        <div *ngIf="angForm.controls['address'].invalid && (angForm.controls['address'].dirty || angForm.controls['address'].touched)"class="alert alert-danger">
+
+                        <div *ngIf="angForm.controls['address'].errors.required">Address is Required</div>
+
+                        </div>
+
+                        <br>
+
+                        <br>
+
+                        <button type="submit"
+
+                        [disabled]="angForm.pristine||angForm.invalid" class="btn btn-primary">Submit</button>
+
+                       
+
+            </form>
+
+            </div>
+
+            <div class="col-sm-9">
+
+            <div class="img-container">
+
+                    <h4><b> Location to contact us</b></h4>
+
+                    <i class="fa fa-map-marker" style="font-size:24px"></i>
+
+                    <br>
+
+                    <br>
+
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121058.71614918913!2d73.79292734797404!3d18.525066075766944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c06d40255135%3A0x63a05f61373a35d9!2sV&#39;Smart%20Academy-CA%20Final%7CFoundation%7CIPCC%20Video%20class%7CPen%20Drive%20online%20lecture%20Pune%20India!5e0!3m2!1sen!2sin!4v1572689842334!5m2!1sen!2sin" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+
+                    <br>
+
+                    <br>
+
+                   <i class="fa fa-facebook" style="font-size:36px"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-google-plus-circle" style="font-size:36px"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-linkedin-square" style="font-size:36px"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-twitter-square" style="font-size:36px"></i>
+
+                </div>
+
+                </div>
+
+                </div>
+
+</div>
+
+ 
+
+   
+
+    
+
+ 
+
+ 
+
+Css
+
+.img-container {
+
+    text-align: center;
+
+    width :100;
+
+    height:100;
+
+}
+
+.row.content {height: 1500px}
+
+.row.content {height: auto;}
+
+ 
+
+Ts
+
+import { Component, OnInit } from '@angular/core';
+
+import{ FormGroup, FormBuilder, Validators,FormControl }from'@angular/forms';
+
+ 
+
+@Component({
+
+  selector: 'app-contactus-module',
+
+  templateUrl: './contactus.component.html',
+
+  styleUrls: ['./contactus.component.css']
+
+})
+
+export class ContactusComponent implements OnInit {
+
+  title=' Contact Us ';
+
+  angForm:FormGroup;
+
+  constructor(private fb:FormBuilder){
+
+    this.createForm();
+
+  }
+
+  createForm()
+
+  {
+
+    this.angForm=this.fb.group({
+
+      name:["",Validators.required],
+
+      address:["",Validators.required],
+
+      email:["", [Validators.required,Validators.email]],
+
+      phoneno:new FormControl('', Validators.compose([
+
+        Validators.required,
+
+        Validators.pattern('^[0-9]{10}')
+
+  ])),
+
+      });  
+
+  }
+
+ 
+
+  ngOnInit() {
+
+  }
+
+ 
+
+}
+
+ 
+
+ 
+
+ 
+
+Gallery
+
+Html
+
+ 
+
+<h1><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Our virtual session</b></h1>
+
+<br>
+
+<br>
+
+<p class="text-primary"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Glimse of the virtual training classes. We have various ways of using this classroom in corporate sector , education sector ,handling business meeting</b></p>
+
+<br>
+
+<br>
+
+<br>
+
+<div class="centre">
+
+<div class="row">
+
+    <div class="col-md-3">
+
+    <div>
+
+    <a href="assets\images\hqdefault.jpg" target="_blank">
+
+    <img class="img-responsive" src="assets\images\hqdefault.jpg" style="width:60%">
+
+    </a>
+
+    </div>
+
+   
+
+  <h5><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Business Purpose</b></h5>
+
+ 
+
+  </div>
+
+  <div class="col-md-3">
+
+    <div>
+
+    <a href="assets\images\qsdd.jpg" target="_blank">
+
+    <img class="img-responsive"  src="assets\images\qsdd.jpg"  style="width:60%">
+
+    </a>
+
+    <h5><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Education Purpose</b></h5>
+
+  </div>
+
+  </div>
+
+  <div class="col-md-3">
+
+      <div>
+
+     <a href="assets\images\virtual-classroom.jpg" target="_blank">
+
+    <img class="img-responsive"  src="assets\images\virtual-classroom.jpg"    style="width:60%">
+
+    </a>
+
+    <h5><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Corporate Interactive Meeting</b></h5>
+
+    </div>
+
+  </div>
+
+  <div class="col-md-3">
+
+    <div>
+
+        <a href="assets\images\Capture.PNG" target="_blank">
+
+      <img class="img-responsive" src="assets\images\Capture.PNG"  style="width:60%" height="180">
+
+    </a>
+
+    </div>
+
+      <br>
+
+      <h5><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student research programs</b></h5> 
+
+    </div>
+
+</div>
+
+</div>
+
+ 
+
+ 
+
+Css
+
+* {
+
+    box-sizing: border-box;
+
+  }
+
+ 
+
+  .column {
+
+    float: left;
+
+    width: 23.33%;
+
+    padding: 1px;
+
+  }
+
+ 
+
+  /* Clearfix (clear floats) */
+
+  .row::after {
+
+    content: "";
+
+    clear: both;
+
+    display: table;
+
+  }
+
+ 
+
+  .person {
+
+    border: 10px solid transparent;
+
+    margin-bottom: 25px;
+
+    width: 80%;
+
+    height: 80%;
+
+  }
+
+
+  .row.content {height: 1500px}
+
+  .row.content {height: auto;}
+
+ 
+
+  .centre {
+
+    width: 1900px;
+
+    padding: 50px;
+
+    margin: 20px;
+
+  }
+
+ 
+
+HOME
+
+ 
+
+Html
+
+<div class="container">
+
+        <div class="text-center" >
+
+        <h3>Online learning has many benefits, one of which is the flexibility afforded by the virtual classroom.
+
+            Choose from over 100,000 online video courses with new additions published every month and enhance your learning skills</h3>
+
+          <iframe width="500" height="315" src="https://www.youtube.com/embed/ZmIRpU1xY9g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        </div>
+
+        <br>
+
+        <br>
+
+        <div class="row">
+
+          <div class="col-md-4">
+
+            <div class="thumbnail">
+
+            <img src="assets\images\snip3.PNG" width="80" height="80">
+
+            <h4>Go at your own pace</h4>
+
+            <p>Enjoy lifetime access to courses on Virtual Learn Website</p>
+
+             </div>
+
+          </div>
+
+          <div class="col-md-4">
+
+            <div class="thumbnail">
+
+            <img src="assets\images\snip4.PNG" width="80" height="80">
+
+            <br>
+
+            <h4>Learn from industry experts</h4>
+
+            <p>Select from top instructors around the world</p>
+
+            </div>
+
+          </div>
+
+          <div class="col-md-4">
+
+            <div class="thumbnail">
+
+            <img src="assets\images\snip2.PNG" width="80" height="80">
+
+            <h4>Find video courses on almost any topic</h4>
+
+            <p>Build your library for your career and personal growth</p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+     
+
+ 
+
+ 
+
+Css
+
+video {
+
+    width: 40%;
+
+    height: auto;
+
+  }
+
+  @media only screen and (min-width: 600px) {
+
+    .col-s-1 {width: 8.33%;}
+
+   .col-s-2 {width: 16.66%;}
+
+    .col-s-3 {width: 25%;}
+
+    .col-s-4 {width: 33.33%;}
+
+    .col-s-5 {width: 41.66%;}
+
+    .col-s-6 {width: 50%;}
+
+    .col-s-7 {width: 58.33%;}
+
+    .col-s-8 {width: 66.66%;}
+
+    .col-s-9 {width: 75%;}
+
+    .col-s-10 {width: 83.33%;}
+
+    .col-s-11 {width: 91.66%;}
+
+    .col-s-12 {width: 100%;}
+
+  }
+
+ 
+
+  @media only screen and (min-width: 768px) {
+
+    .col-1 {width: 8.33%;}
+
+    .col-2 {width: 16.66%;}
+
+    .col-3 {width: 25%;}
+
+    .col-4 {width: 33.33%;}
+
+    .col-5 {width: 41.66%;}
+
+    .col-6 {width: 50%;}
+
+    .col-7 {width: 58.33%;}
+
+    .col-8 {width: 66.66%;}
+
+    .col-9 {width: 75%;}
+
+    .col-10 {width: 83.33%;}
+
+    .col-11 {width: 91.66%;}
+
+    .col-12 {width: 100%;}
+
+  }
+
+ 
+
+ 
+
+Ts
+
+video {
+
+    width: 40%;
+
+    height: auto;
+
+  }
+
+  @media only screen and (min-width: 600px) {
+
+    .col-s-1 {width: 8.33%;}
+
+    .col-s-2 {width: 16.66%;}
+
+    .col-s-3 {width: 25%;}
+
+    .col-s-4 {width: 33.33%;}
+
+    .col-s-5 {width: 41.66%;}
+
+    .col-s-6 {width: 50%;}
+
+    .col-s-7 {width: 58.33%;}
+
+    .col-s-8 {width: 66.66%;}
+
+    .col-s-9 {width: 75%;}
+
+    .col-s-10 {width: 83.33%;}
+
+    .col-s-11 {width: 91.66%;}
+
+    .col-s-12 {width: 100%;}
+
+  }
+
+ 
+
+  @media only screen and (min-width: 768px) {
+
+    .col-1 {width: 8.33%;}
+
+    .col-2 {width: 16.66%;}
+
+    .col-3 {width: 25%;}
+
+    .col-4 {width: 33.33%;}
+
+    .col-5 {width: 41.66%;}
+
+    .col-6 {width: 50%;}
+
+    .col-7 {width: 58.33%;}
+
+    .col-8 {width: 66.66%;}
+
+    .col-9 {width: 75%;}
+
+    .col-10 {width: 83.33%;}
+
+    .col-11 {width: 91.66%;}
+
+    .col-12 {width: 100%;}
+
+  }
+
+ 
+
+ 
