@@ -1,0 +1,725 @@
+<%@ Page Title="" Language="C#" MasterPageFile="~/ADONET/ado.Master" AutoEventWireup="true" CodeBehind="ShowMenuItemListAdmin.aspx.cs" Inherits="practice.ADONET.ShowMenuItemListAdmin" %>
+
+<%@ Import Namespace="Com.Cognizant.Truyum.Dao" %>
+
+<%@ Import Namespace="Com.Cognizant.Truyum.Model" %>
+
+<%@ Import Namespace="Com.Cognizant.Truyum.Utility" %>
+
+ 
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <style type="text/css">
+
+        .auto-style1 {
+
+            margin-left: 0px;
+
+            margin-right: 0px;
+
+        }
+
+    </style>
+
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <p>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="mdl-navigation__link" href="ShowMenuItemListAdmin.aspx?edit=yes"><font color="blue">Menu</font></a>
+
+    </p>
+
+    <p>
+
+        <asp:GridView ID="Gridadmin" runat="server" CssClass="auto-style1" AutoGenerateColumns="false">
+
+                        <Columns>
+
+                <asp:BoundField DataField="Id" HeaderText="Id" />
+
+                <asp:BoundField DataField="Name" HeaderText="Name" />
+
+                <asp:BoundField DataField="Price" HeaderText="Price" DataFormatString="{0:c}"/>
+
+                <asp:BoundField DataField="Active" HeaderText="Active" />
+
+                <asp:BoundField DataField="DateOfLaunch" HeaderText="DateOfLaunch" />
+
+                <asp:BoundField DataField="Category" HeaderText="Category" />
+
+                <asp:BoundField DataField="FreeDelivery" HeaderText="FreeDelivery" />
+
+                <asp:TemplateField HeaderText="Action" >
+
+               
+
+                <ItemTemplate>
+
+                    <asp:HyperLink ID="h1" NavigateUrl='<% #Eval("ID", "ShowEditMenuItemForm.aspx?id={0}") %>' Text="Edit" runat="server"></asp:HyperLink>
+
+                       
+
+                </ItemTemplate>
+
+                        </asp:TemplateField>
+
+            </Columns>
+
+ 
+
+        </asp:GridView>
+
+    </p>
+
+    <p>
+
+    </p>
+
+    <p>
+
+    </p>
+
+    <p>
+
+    </p>
+
+    <p>
+
+    </p>
+
+    <p>
+
+    </p>
+
+</asp:Content>
+
+ 
+
+using System;
+
+using System.Collections.Generic;
+
+using System.Linq;
+
+using System.Web;
+
+using System.Web.UI;
+
+using System.Web.UI.WebControls;
+
+using Com.Cognizant.Truyum.Dao;
+
+using Com.Cognizant.Truyum.Model;
+
+using Com.Cognizant.Truyum.Utility;
+
+using System.Data;
+
+using System.Data.SqlClient;
+
+using System.Configuration;
+
+ 
+
+namespace practice.ADONET
+
+{
+
+    public partial class ShowMenuItemListAdmin : System.Web.UI.Page
+
+    {
+
+        protected void Page_Load(object sender, EventArgs e)
+
+        {
+
+            Helper.constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+
+            MenuItemDaoSql obj = new MenuItemDaoSql();
+
+            List<Com.Cognizant.Truyum.Model.MenuItem> menuItems = obj.GetMenuItemListAdmin();
+
+            Gridadmin.DataSource = menuItems;
+
+            Gridadmin.DataBind();
+
+        }
+
+    }
+
+}
+
+ 
+
+<%@ Page Title="" Language="C#" MasterPageFile="~/ADONET/ado.Master" AutoEventWireup="true" CodeBehind="ShowMenuItemListCustomer.aspx.cs" Inherits="practice.ADONET.ShowMenuItemListCustomer" %>
+
+<%@ Import Namespace="Com.Cognizant.Truyum.Dao" %>
+
+<%@ Import Namespace="Com.Cognizant.Truyum.Model" %>
+
+<%@ Import Namespace="Com.Cognizant.Truyum.Utility" %>
+
+ 
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <style type="text/css">
+
+        .newStyle1 {
+
+        color: #008000;
+
+    }
+
+    </style>
+
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+ 
+
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+ 
+
+   <asp:Label ID="Label1" runat="server" Text="Item Added To Cart Successfully" Visible="false" CssClass="newStyle1"></asp:Label>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+   <a class="mdl-navigation__link" href="ShowMenuItemListCustomer.aspx"><font color="blue">Menu</font></a>  
+
+&nbsp;&nbsp;
+
+   <a class="mdl-navigation__link" href="ShowCart.aspx"><font color="black">Cart</font></a>
+
+    <br />
+
+    &nbsp;<br />
+
+    <asp:GridView ID="Gridcustomer" runat="server" AutoGenerateColumns="false">
+
+            <Columns>
+
+                <asp:BoundField DataField="Id" HeaderText="ID" />
+
+                <asp:BoundField DataField="Name" HeaderText="Name" />
+
+                <asp:BoundField DataField="FreeDelivery" HeaderText="FreeDelivery" />
+
+                <asp:BoundField DataField="Price" HeaderText="Price" DataFormatString="{0:c}"/>
+
+                <asp:BoundField DataField="Category" HeaderText="Category" />
+
+                <asp:BoundField DataField="Active" HeaderText="Active" Visible="false" />
+
+                <asp:BoundField DataField="DateOfLaunch" HeaderText="DateOfLaunch" Visible="false" />
+
+                <asp:TemplateField HeaderText="Action">
+
+                    <ItemTemplate>
+
+                       <asp:HyperLink NavigateUrl='<% #Eval("ID", "AddToCart.aspx?id={0}") %>' Text="Add to Cart" Id="h1" runat="server">
+
+ 
+
+                        </asp:HyperLink>
+
+                    </ItemTemplate>
+
+                     
+
+                </asp:TemplateField>
+
+ 
+
+            </Columns>
+
+        </asp:GridView>
+
+</asp:Content>
+
+ 
+
+using System;
+
+using System.Collections.Generic;
+
+using System.Linq;
+
+using System.Web;
+
+using System.Web.UI;
+
+using System.Web.UI.WebControls;
+
+using Com.Cognizant.Truyum.Dao;
+
+using Com.Cognizant.Truyum.Model;
+
+using Com.Cognizant.Truyum.Utility;
+
+using System.Data;
+
+using System.Data.SqlClient;
+
+using System.Configuration;
+
+ 
+
+namespace practice.ADONET
+
+{
+
+    public partial class ShowMenuItemListCustomer : System.Web.UI.Page
+
+    {
+
+        protected void Page_Load(object sender, EventArgs e)
+
+        {
+
+            if (!this.IsPostBack)
+
+            {
+
+                Helper.constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+
+ 
+
+                MenuItemDaoSql menuItem = new MenuItemDaoSql();
+
+                List<Com.Cognizant.Truyum.Model.MenuItem> menuItemList = menuItem.GetMenuItemListCustomer();
+
+                Gridcustomer.DataSource = menuItemList;
+
+                Gridcustomer.DataBind();
+
+            }
+
+            if (Request.QueryString["status"] != null)
+
+                Label1.Visible = true;
+
+ 
+
+        }
+
+    }
+
+}
+
+ 
+
+ 
+
+using System;
+
+using System.Collections.Generic;
+
+using System.Linq;
+
+using System.Web;
+
+using System.Web.UI;
+
+using System.Web.UI.WebControls;
+
+using Com.Cognizant.Truyum.Model;
+
+using Com.Cognizant.Truyum.Utility;
+
+using System.Data;
+
+using System.Data.SqlClient;
+
+using Com.Cognizant.Truyum.Dao;
+
+using System.Data;
+
+using System.Data.SqlClient;
+
+using System.Configuration;
+
+using Com.Cognizant.Truyum.Model;
+
+using Com.Cognizant.Truyum.Utility;
+
+ 
+
+ 
+
+ 
+
+namespace practice.ADONET
+
+{
+
+    public partial class ShowEditMenuItemForm : System.Web.UI.Page
+
+    {
+
+        protected void Page_Load(object sender, EventArgs e)
+
+        {
+
+            if (!this.IsPostBack)
+
+            {
+
+                Helper.constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+
+                MenuItemDaoSql obj = new  MenuItemDaoSql();
+
+                long id = Convert.ToInt64(Request.QueryString["Id"]);
+
+                ViewState["Id"] = id;
+
+                Com.Cognizant.Truyum.Model.MenuItem item = obj.GetMenuItem(id);
+
+                txttitle.Text = item.Name;
+
+                txtprice.Text = item.Price.ToString();
+
+                if (item.Active)
+
+                    rdbyes.Checked = true;
+
+                else
+
+                    rdbno.Checked = false;
+
+                if (item.FreeDelivery)
+
+                    free.Checked = true;
+
+                else
+
+                    free.Checked = false;
+
+                txtDateOfLaunch.Text = item.DateOfLaunch.ToShortDateString();
+
+                ddlcategory.Text = item.Category;
+
+          
+
+              
+
+                
+
+ 
+
+            }
+
+ 
+
+ 
+
+        }
+
+ 
+
+        protected void Button1_Click(object sender, EventArgs e)
+
+        {
+
+            Helper.constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+
+            MenuItemDaoSql obj = new MenuItemDaoSql();
+
+            Com.Cognizant.Truyum.Model.MenuItem menu = new Com.Cognizant.Truyum.Model.MenuItem();
+
+            menu.Id = Convert.ToInt64(ViewState["Id"]);
+
+            menu.Name = txttitle.Text;
+
+            menu.Price = Convert.ToSingle(txtprice.Text);
+
+            if (rdbyes.Checked) menu.Active = true;
+
+            if (rdbno.Checked) menu.Active = false;
+
+           if(free.Checked)menu.FreeDelivery = true;
+
+           else  menu.FreeDelivery = false;
+
+            DateUtility date1 = new DateUtility();
+
+            menu.DateOfLaunch = Convert.ToDateTime(txtDateOfLaunch.Text);
+
+            menu.Category = ddlcategory.Text;
+
+            obj.ModifyMenuItem(menu);
+
+            //Session["menu"] = obj;
+
+ 
+
+            Response.Redirect("EditMenuItemStatus.aspx");
+
+ 
+
+        }
+
+    
+
+ 
+
+        protected void Clear_Click(object sender, EventArgs e)
+
+        {
+
+            txttitle.Text = "";
+
+            txtprice.Text = "";
+
+ 
+
+        }
+
+    }
+
+}
+
+ 
+
+using System;
+
+using System.Collections.Generic;
+
+using System.Linq;
+
+using System.Web;
+
+using System.Web.UI;
+
+using System.Web.UI.WebControls;
+
+using Com.Cognizant.Truyum.Dao;
+
+using Com.Cognizant.Truyum.Model;
+
+using Com.Cognizant.Truyum.Utility;
+
+using System.Data;
+
+using System.Data.SqlClient;
+
+using System.Configuration;
+
+ 
+
+namespace practice.ADONET
+
+{
+
+    public partial class ShowCart : System.Web.UI.Page
+
+    {
+
+        protected void Page_Load(object sender, EventArgs e)
+
+        {
+
+            Helper.constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+
+            try
+
+            {
+
+ 
+
+ 
+
+             
+
+                    CartDaoSql cartDao = new CartDaoSql();
+
+                    Cart c = cartDao.GetAllCartItems(1);
+
+                    gridshow.DataSource = (List<Com.Cognizant.Truyum.Model.MenuItem>)c.MenuItemList;
+
+                    gridshow.DataBind();
+
+                    double d = c.Total;
+
+                    string str = string.Format("{0:c}", d);
+
+                    Label1.Text = str;
+
+                    if (d == 0)
+
+                        Response.Redirect("CartEmpty.aspx");
+
+               
+
+            }
+
+            catch(CartEmptyException ex)
+
+               
+
+                {
+
+                    Response.Redirect("CartEmpty.aspx");
+
+                }
+
+            }
+
+            //if (Request.QueryString["status"] != null)
+
+            //    Label2.Visible = true;
+
+ 
+
+        }
+
+    }
+
+ 
+
+ 
+
+ 
+
+ 
+
+using System;
+
+using System.Collections.Generic;
+
+using System.Linq;
+
+using System.Web;
+
+using System.Web.UI;
+
+using System.Web.UI.WebControls;
+
+using Com.Cognizant.Truyum.Dao;
+
+using Com.Cognizant.Truyum.Model;
+
+using Com.Cognizant.Truyum.Utility;
+
+using System.Data;
+
+using System.Data.SqlClient;
+
+using System.Configuration;
+
+ 
+
+ 
+
+namespace practice.ADONET
+
+{
+
+    public partial class RemoveCart : System.Web.UI.Page
+
+    {
+
+        protected void Page_Load(object sender, EventArgs e)
+
+        {
+
+            if (!this.IsPostBack)
+
+            {
+
+                Helper.constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+
+                long userId = 1;
+
+                long menuItemId = Convert.ToInt64(Request.QueryString["id"]);
+
+                CartDaoSql cartDao = new CartDaoSql();
+
+                cartDao.RemoveCartItem(userId, menuItemId);
+
+                //Session["u101"] = cartDao;
+
+                Response.Redirect("ShowCart.aspx?status=true");
+
+            }
+
+        }
+
+    }
+
+}
+
+ 
+
+using System;
+
+using System.Collections.Generic;
+
+using System.Linq;
+
+using System.Web;
+
+using System.Web.UI;
+
+using System.Web.UI.WebControls;
+
+using Com.Cognizant.Truyum.Dao;
+
+using Com.Cognizant.Truyum.Model;
+
+using Com.Cognizant.Truyum.Utility;
+
+using System.Data;
+
+using System.Data.SqlClient;
+
+using System.Configuration;
+
+ 
+
+ 
+
+namespace practice.ADONET
+
+{
+
+    public partial class AddToCart : System.Web.UI.Page
+
+    {
+
+        protected void Page_Load(object sender, EventArgs e)
+
+        {
+
+            Helper.constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+
+            long userId = 1;
+
+            long menuItemId = Convert.ToInt64(Request.QueryString["id"]);
+
+            CartDaoSql cartDao = new CartDaoSql();
+
+            cartDao.AddCartItem(userId, menuItemId);
+
+            //Session["u101"] = cartDao;
+
+            Response.Redirect("ShowMenuItemListCustomer.aspx?status=true");
+
+            //MenuItemDaoCollection menuItemDao = new MenuItemDaoCollection();
+
+            //GridView1.DataSource =  (List<MenuItem1>) menuItemDao.MenuItemList;
+
+            //GridView1.DataBind();
+
+        }
+
+    }
+
+}
