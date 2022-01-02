@@ -1,0 +1,345 @@
+using System;
+
+using System.Collections.Generic;
+
+using System.Linq;
+
+using System.Text;
+
+using System.Threading.Tasks;
+
+using Com.Cognizant.Truyum.Model;
+
+using System.Data;
+
+using System.Data.SqlClient;
+
+ 
+
+namespace Com.Cognizant.Truyum.Dao
+
+{
+
+     public class MenuItemDaoSql : IMenuItemDao
+
+    {
+
+        public MenuItem GetMenuItem(long menuItemId)
+
+        {
+
+            MenuItem menu = new MenuItem();
+
+            SqlConnection con = new SqlConnection(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=truyum;Integrated Security=True");
+
+            SqlCommand cmd = new SqlCommand("SELECT me_id,me_name,me_price,me_active,me_date_of_launch,me_category,me_free_delivery FROM menu_item WHERE me_id=1;");
+
+            con.Open();
+
+            cmd.Parameters.AddWithValue("1", menuItemId);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            dr.Read();
+
+            menu.Id = Convert.ToInt32(dr[0]);
+
+            menu.Name = dr[1].ToString();
+
+            menu.Price = float.Parse(dr[2].ToString());
+
+            menu.Active = Convert.ToBoolean(Int32.Parse(dr[3].ToString()));
+
+            menu.DateOfLaunch = DateTime.Parse(dr[4].ToString());
+
+            menu.Category = dr[5].ToString();
+
+            menu.FreeDelivery = Convert.ToBoolean(Int32.Parse(dr[6].ToString()));
+
+            return menu;
+
+ 
+
+        }
+
+ 
+
+ 
+
+ 
+
+        public List<MenuItem> GetMenuItemListAdmin()
+
+        {
+
+            List<MenuItem> menulst = new List<MenuItem>();
+
+            SqlConnection con = new SqlConnection(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=truyum;Integrated Security=True");
+
+            SqlCommand cmd = new SqlCommand("SELECT me_id,me_name,me_price,me_active,me_date_of_launch,me_category,me_free_delivery FROM menu_item ", con);
+
+            con.Open();
+
+            MenuItem menu;
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+
+            {
+
+                menu = new MenuItem();
+
+                menu.Id = Convert.ToInt32(dr[0]);
+
+                menu.Name = dr[1].ToString();
+
+                menu.Price = float.Parse(dr[2].ToString());
+
+                menu.Active = dr[3].ToString() == "YES" ? true : false;
+
+                menu.DateOfLaunch = DateTime.Parse(dr[4].ToString());
+
+                menu.Category = dr[5].ToString();
+
+                menu.FreeDelivery = dr[6].ToString() == "YES" ? true : false;
+
+                menulst.Add(menu);
+
+            }
+
+            con.Close();
+
+            return menulst;
+
+ 
+
+ 
+
+        }
+
+ 
+
+        public List<MenuItem> GetMenuItemListCustomer()
+
+        {
+
+            List<MenuItem> menulst = new List<MenuItem>();
+
+            SqlConnection con = new SqlConnection(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=truyum;Integrated Security=True");
+
+            SqlCommand cmd = new SqlCommand("SELECT me_id,me_name,me_price,me_active,me_date_of_launch,me_category,me_free_delivery FROM menu_item WHERE me_date_of_launch < GETDATE() AND me_active = 'Yes'", con);
+
+            con.Open();
+
+            MenuItem menu;
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+
+            {
+
+                menu = new MenuItem();
+
+                menu.Id = Convert.ToInt32(dr[0]);
+
+                menu.Name = dr[1].ToString();
+
+                menu.Price = float.Parse(dr[2].ToString());
+
+                menu.Active = dr[3].ToString() == "YES" ? true : false;
+
+                menu.DateOfLaunch = DateTime.Parse(dr[4].ToString());
+
+                menu.Category = dr[5].ToString();
+
+                menu.FreeDelivery = dr[6].ToString() == "YES" ? true : false;
+
+                menulst.Add(menu);
+
+ 
+
+            }
+
+            con.Close();
+
+            return menulst;
+
+        }
+
+ 
+
+        public void ModifyMenuItem(MenuItem menuItem)
+
+        {
+
+            SqlConnection con = new SqlConnection(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=truyum;Integrated Security=True");
+
+            con.Open();
+
+            List<MenuItem> menulst = new List<MenuItem>();
+
+            SqlCommand cmd = new SqlCommand("UPDATE dbo.menu_item SET me_name=@nm, me_price=@pr, me_active=@at, me_date_of_launch=@dt, me_category=@cat, me_free_delivery=@frd");
+
+            SqlParameter para = new SqlParameter();
+
+            cmd.Parameters.AddWithValue("@id", menuItem.Id);
+
+            cmd.Parameters.AddWithValue("@nm", menuItem.Name);
+
+            cmd.Parameters.AddWithValue("@pr", menuItem.Price);
+
+            cmd.Parameters.AddWithValue("@at", menuItem.Active);
+
+            cmd.Parameters.AddWithValue("@dt", menuItem.DateOfLaunch);
+
+            cmd.Parameters.AddWithValue("@cat", menuItem.Category);
+
+            cmd.Parameters.AddWithValue("@frd", menuItem.FreeDelivery);
+
+ 
+
+        }
+
+ 
+
+    }
+
+}
+
+ 
+
+ 
+
+using System;
+
+using System.Collections.Generic;
+
+using System.Linq;
+
+using System.Text;
+
+using System.Threading.Tasks;
+
+using Com.Cognizant.Truyum.Model;
+
+using Com.Cognizant.Truyum.Dao;
+
+using Com.Cognizant.Truyum.Utility;
+
+using System.Data;
+
+using System.Data.SqlClient;
+
+ 
+
+namespace Com.Cognizant.Truyum.Dao
+
+{
+
+    public class MenuItemDaoSqlTest
+
+    {
+
+        //SqlConnection con = new SqlConnection(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=truyum;Integrated Security=True");
+
+        //DataSet ds = new DataSet();
+
+        public void TestGetMenuItemListAdmin1()
+
+        {
+
+            MenuItemDaoSql obj = new MenuItemDaoSql();
+
+            List<MenuItem> list = obj.GetMenuItemListAdmin();
+
+            foreach (MenuItem m in list)
+
+            {
+
+                Console.WriteLine(m.ToString());
+
+            }
+
+            //foreach (DataRow dr in ds.menu_item[0].Rows)
+
+            //{
+
+            //    Console.WriteLine(dr[0].ToString());
+
+            //    Console.WriteLine(dr[1].ToString());
+
+            //    Console.WriteLine(dr[2].ToString());
+
+            //    Console.WriteLine(dr[3].ToString());
+
+            //    Console.WriteLine(dr[4].ToString());
+
+            //    Console.WriteLine(dr[5].ToString());
+
+            //    Console.WriteLine(dr[6].ToString());
+
+            //}
+
+            //Console.ReadLine();
+
+ 
+
+        }
+
+ 
+
+        public void TestGetMenuItemListCustomer1()
+
+        {
+
+            MenuItemDaoSql obj = new MenuItemDaoSql();
+
+            List<MenuItem> list = obj.GetMenuItemListCustomer();
+
+            foreach (MenuItem m in list)
+
+            {
+
+                Console.WriteLine(m.ToString());
+
+            }
+
+        }
+
+ 
+
+ 
+
+        public void TestModifyMenuItem()
+
+        {
+
+            DateUtility d = new DateUtility();
+
+            MenuItemDaoSql obj = new MenuItemDaoSql();
+
+ 
+
+            MenuItem m = new MenuItem(1, "Modak", (float)300.00, true, d.ConvertToShortDateString("02/11/2020"), "Main Course", true);
+
+ 
+
+            obj.ModifyMenuItem(m);
+
+            //MenuItem m1 = obj.GetMenuItem(1);
+
+            //Console.WriteLine("\n\tUpdated Data :- ");
+
+            Console.WriteLine(m.ToString());
+
+            Console.WriteLine("\n\t");
+
+        }
+
+ 
+
+    }
+
+}
