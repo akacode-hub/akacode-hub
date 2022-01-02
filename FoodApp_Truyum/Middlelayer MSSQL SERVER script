@@ -1,0 +1,123 @@
+-- Include table data insertion, updation, deletion and select scripts
+
+USE truYum;
+
+GO
+
+ 
+
+--1.   View Menu Item List Admin (TYUC001)
+
+--a.   Frame insert scripts to add data into menu_item table. Refer View Menu Item List Admin screen shot from Web UI Specification for sample data.
+
+INSERT INTO menu_item VALUES('Sandwich',CAST('99.00' AS FLOAT),'YES','2017-03-15','MainCourse','Yes'),
+
+                            ('Burger',CAST('129.00' AS FLOAT),'YES','2017-12-23','MainCourse','No'),
+
+                                                ('Pizza',CAST('149.00' AS FLOAT),'YES','2017-08-21','MainCourse','No'),
+
+                                                ('French Fries',CAST('57.00' AS FLOAT),'NO','2017-07-02','Starters','Yes'),
+
+                                                ('Chocolate brownie',CAST('32.00' AS FLOAT),'YES','2022-11-02','Dessert','Yes');
+
+--b.   Frame SQL query to get all menu items
+
+                            SELECT me_id,me_name,me_price,me_active,me_date_of_launch,me_category,me_free_delivery FROM menu_item;
+
+                                               
+
+--2.   View Menu Item List Customer (TYUC002)
+
+--a.   Frame SQL query to get all menu items which after launch date and is active.
+
+SELECT me_id,me_name,me_price,me_active,me_date_of_launch,me_category,me_free_delivery FROM menu_item
+
+ 
+
+WHERE me_date_of_launch <GETDATE() AND me_active ='Yes';
+
+--3.   Edit Menu Item (TYUC003)
+
+--a.   Frame SQL query to get a menu items based on Menu Item Id
+
+SELECT me_id,me_name,me_price,me_active,me_date_of_launch,me_category,me_free_delivery FROM menu_item WHERE me_id=1;
+
+--b.   Frame update SQL menu_items table to update all the columns values based on Menu Item Id
+
+UPDATE dbo.menu_item
+
+SET me_name='pasta',
+
+    me_price='70',
+
+       me_active='NO',
+
+       me_date_of_launch='2019-02-09',
+
+       me_category='starters',
+
+       me_free_delivery='Yes'
+
+       where me_id=3;
+
+ 
+
+       SELECT me_id,me_name,me_price,me_active,me_date_of_launch,me_category,me_free_delivery FROM menu_item;
+
+       --4.   Add to Cart (TYUC004)
+
+       --a.   Frame insert scripts for adding data into user and cart tables.In user table create two users. Once user will not have any entries in cart, while the other will have at least 3 items in the cart
+
+insert into [user] VALUES('abc'),('xyz');
+
+SELECT *FROM [user];
+
+ 
+
+insert into cart VALUES(1,2),(2,3),(2,4);
+
+SELECT ct_id,ct_us_id,ct_me_id FROM cart;
+
+ 
+
+--     5.     View Cart (TYUC005)
+
+--a.   Frame SQL query to get all menu items in a particular user’s cart
+
+select me_id,me_name,me_active,me_date_of_launch,me_category,me_free_delivery
+
+from menu_item
+
+JOIN cart ON menu_item.me_id=cart.ct_me_id
+
+JOIN [user] u ON u.us_id=cart.ct_us_id
+
+WHERE u.us_id=2;
+
+ 
+
+--b.   Frame SQL query to get the total price of all menu items in a particular user’s cart
+
+SELECT SUM(me_price) FROM menu_item
+
+JOIN cart ON menu_item.me_id=cart.ct_us_id
+
+JOIN [user] u ON u.us_id=cart.ct_us_id
+
+WHERE u.us_id=2;
+
+ 
+
+ 
+
+--6.   Remove Item from Cart (TYUC006)
+
+--a.   Frame SQL query to remove a menu items from Cart based on User Id and Menu Item Id
+
+       DELETE FROM cart WHERE ct_us_id=1 AND ct_me_id=2;
+
+          SELECT ct_id,ct_us_id,ct_me_id FROM cart;
+
+                
+
+                           
