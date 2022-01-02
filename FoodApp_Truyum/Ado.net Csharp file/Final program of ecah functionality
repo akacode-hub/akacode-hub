@@ -1,0 +1,959 @@
+using System;
+
+using System.Collections.Generic;
+
+using System.Linq;
+
+using System.Text;
+
+using System.Threading.Tasks;
+
+using Com.Cognizant.Truyum.Model;
+
+using System.Data;
+
+using System.Data.SqlClient;
+
+ 
+
+namespace Com.Cognizant.Truyum.Dao
+
+{
+
+    public class MenuItemDaoSql : IMenuItemDao
+
+    {
+
+        public MenuItem GetMenuItem(long menuItemId)
+
+        {
+
+            MenuItem menu = new MenuItem();
+
+            SqlConnection con = new SqlConnection(Helper.constr);
+
+            SqlCommand cmd = new SqlCommand("SELECT me_id,me_name,me_price,me_active,me_date_of_launch,me_category,me_free_delivery FROM menu_item WHERE me_id=@id", con);
+
+            try
+
+            {
+
+ 
+
+ 
+
+                con.Open();
+
+                cmd.Parameters.AddWithValue("@id", menuItemId);
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                dr.Read();
+
+                menu.Id = Convert.ToInt32(dr[0]);
+
+                menu.Name = dr[1].ToString();
+
+                menu.Price = float.Parse(dr[2].ToString());
+
+                menu.Active = dr[3].ToString() == "YES" ? true : false;
+
+                menu.DateOfLaunch = DateTime.Parse(dr[4].ToString());
+
+                menu.Category = dr[5].ToString();
+
+                menu.FreeDelivery = dr[6].ToString() == "YES" ? true : false;
+
+                return menu;
+
+ 
+
+            }
+
+            catch (Exception ex)
+
+            {
+
+                Console.WriteLine();
+
+ 
+
+            }
+
+            finally
+
+            {
+
+                con.Close();
+
+            }
+
+            return null;
+
+        }
+
+ 
+
+ 
+
+ 
+
+ 
+
+        public List<MenuItem> GetMenuItemListAdmin()
+
+        {
+
+            List<MenuItem> menulst = new List<MenuItem>();
+
+            SqlConnection con = new SqlConnection(Helper.constr);
+
+            SqlCommand cmd = new SqlCommand("SELECT me_id,me_name,me_price,me_active,me_date_of_launch,me_category,me_free_delivery FROM menu_item ", con);
+
+            try
+
+            {
+
+                con.Open();
+
+                MenuItem menu;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+
+                {
+
+                    menu = new MenuItem();
+
+                    menu.Id = Convert.ToInt32(dr[0]);
+
+                    menu.Name = dr[1].ToString();
+
+                    menu.Price = float.Parse(dr[2].ToString());
+
+                    menu.Price = float.Parse(dr[2].ToString());
+
+                    menu.Active = dr[3].ToString() == "YES" ? true : false;
+
+                    menu.DateOfLaunch = DateTime.Parse(dr[4].ToString());
+
+                    menu.Category = dr[5].ToString();
+
+                    menu.FreeDelivery = dr[6].ToString() == "YES" ? true : false;
+
+                    menulst.Add(menu);
+
+                }
+
+ 
+
+                return menulst;
+
+            }
+
+            catch
+
+            {
+
+                Console.WriteLine();
+
+ 
+
+            }
+
+            finally
+
+            {
+
+                con.Close();
+
+            }
+
+            return null;
+
+ 
+
+ 
+
+        }
+
+ 
+
+        public List<MenuItem> GetMenuItemListCustomer()
+
+        {
+
+            List<MenuItem> menulst = new List<MenuItem>();
+
+            SqlConnection con = new SqlConnection(Helper.constr);
+
+            SqlCommand cmd = new SqlCommand("SELECT me_id,me_name,me_price,me_active,me_date_of_launch,me_category,me_free_delivery FROM menu_item WHERE me_date_of_launch < GETDATE() AND me_active = 'Yes'", con);
+
+            try
+
+            {
+
+                con.Open();
+
+                MenuItem menu;
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+
+                {
+
+                    menu = new MenuItem();
+
+                    menu.Id = Convert.ToInt32(dr[0]);
+
+                    menu.Name = dr[1].ToString();
+
+                    menu.Price = float.Parse(dr[2].ToString());
+
+                    menu.Active = dr[3].ToString() == "YES" ? true : false;
+
+                    menu.DateOfLaunch = DateTime.Parse(dr[4].ToString());
+
+                    menu.Category = dr[5].ToString();
+
+                    menu.FreeDelivery = dr[6].ToString() == "YES" ? true : false;
+
+                    menulst.Add(menu);
+
+ 
+
+                }
+
+ 
+
+                return menulst;
+
+            }
+
+            catch
+
+            {
+
+                Console.WriteLine();
+
+            }
+
+            finally
+
+            {
+
+                con.Close();
+
+            }
+
+            return null;
+
+        }
+
+ 
+
+        public void ModifyMenuItem(MenuItem menuItem)
+
+        {
+
+            SqlConnection con = new SqlConnection(Helper.constr);
+
+            try
+
+            {
+
+ 
+
+ 
+
+                con.Open();
+
+                List<MenuItem> menulst = new List<MenuItem>();
+
+                SqlCommand cmd = new SqlCommand("UPDATE dbo.menu_item SET me_name=@nm, me_price=@pr, me_active=@at, me_date_of_launch=@dt, me_category=@cat, me_free_delivery=@frd where me_id=" +menuItem.Id, con);
+
+                SqlParameter para = new SqlParameter();
+
+                cmd.Parameters.AddWithValue("@id", menuItem.Id);
+
+                cmd.Parameters.AddWithValue("@nm", menuItem.Name);
+
+                cmd.Parameters.AddWithValue("@pr", menuItem.Price);
+
+                if(menuItem.Active==true)
+
+               {
+
+                    var x = "YES";
+
+                    cmd.Parameters.AddWithValue("@at",x);
+
+                }
+
+                else
+
+                {
+
+                    var x = "NO";
+
+                    cmd.Parameters.AddWithValue("@at", x);
+
+                }
+
+              
+
+                cmd.Parameters.AddWithValue("@dt", menuItem.DateOfLaunch);
+
+                cmd.Parameters.AddWithValue("@cat", menuItem.Category);
+
+               //cmd.Parameters.AddWithValue("@frd", menuItem.FreeDelivery);
+
+                if(menuItem.FreeDelivery==true)
+
+                {
+
+                    var x = "YES";
+
+                    cmd.Parameters.AddWithValue("@frd", x);
+
+                }
+
+                else
+
+                {
+
+              
+
+                    var x = "NO";
+
+                    cmd.Parameters.AddWithValue("@frd", x);
+
+ 
+
+                }
+
+                cmd.ExecuteNonQuery();
+
+            }
+
+            catch
+
+            {
+
+                Console.WriteLine();
+
+            }
+
+            finally
+
+            {
+
+                con.Close();
+
+            }
+
+ 
+
+ 
+
+ 
+
+        }
+
+    }
+
+}
+
+ 
+
+ 
+
+using System;
+
+using System.Collections.Generic;
+
+using System.Linq;
+
+using System.Text;
+
+using System.Threading.Tasks;
+
+using Com.Cognizant.Truyum.Model;
+
+using Com.Cognizant.Truyum.Dao;
+
+using Com.Cognizant.Truyum.Utility;
+
+using System.Data;
+
+using System.Data.SqlClient;
+
+using System.Configuration;
+
+ 
+
+namespace Com.Cognizant.Truyum.Dao
+
+{
+
+    public class MenuItemDaoSqlTest
+
+    {
+
+        //SqlConnection con = new SqlConnection(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=truyum;Integrated Security=True");
+
+        //DataSet ds = new DataSet();
+
+        public void TestGetMenuItemListAdmin1()
+
+        {
+
+            MenuItemDaoSql obj = new MenuItemDaoSql();
+
+            List<MenuItem> list = obj.GetMenuItemListAdmin();
+
+            foreach (MenuItem m in list)
+
+            {
+
+                Console.WriteLine(m.ToString());
+
+            }
+
+            //foreach (DataRow dr in ds.menu_item[0].Rows)
+
+            //{
+
+           //    Console.WriteLine(dr[0].ToString());
+
+            //    Console.WriteLine(dr[1].ToString());
+
+            //    Console.WriteLine(dr[2].ToString());
+
+            //    Console.WriteLine(dr[3].ToString());
+
+            //    Console.WriteLine(dr[4].ToString());
+
+            //    Console.WriteLine(dr[5].ToString());
+
+            //    Console.WriteLine(dr[6].ToString());
+
+            //}
+
+            //Console.ReadLine();
+
+ 
+
+        }
+
+ 
+
+        public void TestGetMenuItemListCustomer1()
+
+        {
+
+            MenuItemDaoSql obj = new MenuItemDaoSql();
+
+            List<MenuItem> list = obj.GetMenuItemListCustomer();
+
+            foreach (MenuItem m in list)
+
+            {
+
+                Console.WriteLine(m.ToString());
+
+            }
+
+        }
+
+ 
+
+ 
+
+        public void TestModifyMenuItem()
+
+        {
+
+            DateUtility d = new DateUtility();
+
+            MenuItemDaoSql obj = new MenuItemDaoSql();
+
+ 
+
+            MenuItem m = new MenuItem(1, "Modak", (float)300.00, true, d.ConvertToShortDateString("02/11/2020"), "Main Course", true);
+
+ 
+
+            obj.ModifyMenuItem(m);
+
+            //MenuItem m1 = obj.GetMenuItem(1);
+
+            //Console.WriteLine("\n\tUpdated Data :- ");
+
+            Console.WriteLine(m.ToString());
+
+            Console.WriteLine("\n\t");
+
+        }
+
+ 
+
+    }
+
+}
+
+ 
+
+using System;
+
+using System.Collections.Generic;
+
+using System.Linq;
+
+using System.Text;
+
+using System.Threading.Tasks;
+
+using Com.Cognizant.Truyum.Model;
+
+using Com.Cognizant.Truyum.Utility;
+
+using System.Data;
+
+using System.Data.SqlClient;
+
+using Com.Cognizant.Truyum.Dao;
+
+using System.Configuration;
+
+ 
+
+namespace Com.Cognizant.Truyum.Dao
+
+{
+
+    public class CartDaoSql : ICartDao
+
+    {
+
+        public List<Cart> userCart = new List<Cart>();
+
+        public CartDaoSql()
+
+        {
+
+ 
+
+        }
+
+        public void AddCartItem(long userId, long menuItemId)
+
+        {
+
+            using (SqlConnection con = new SqlConnection(Helper.constr))
+
+            {
+
+                //con.ConnectionString = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=truyum;Integrated Security=True";
+
+                try
+
+                {
+
+                    con.Open();
+
+                    SqlCommand com = new SqlCommand("INSERT INTO [user](us_name) VALUES ('xyz') SELECT * FROM[user] INSERT INTO cart VALUES(@usid,@meid)", con);
+
+                    SqlParameter para = new SqlParameter();
+
+                    com.Parameters.AddWithValue("@usid", userId);
+
+                    com.Parameters.AddWithValue("@meid", menuItemId);
+
+                    MenuItem menu = new MenuItem(); ;
+
+                    com.ExecuteNonQuery();
+
+                    //con.Close();
+
+                }
+
+                catch (Exception ex)
+
+                {
+
+                    Console.WriteLine(ex.Message);
+
+                }
+
+                finally
+
+                {
+
+                    con.Close();
+
+                }
+
+            }
+
+ 
+
+ 
+
+        }
+
+ 
+
+ 
+
+        public Cart GetAllCartItems(long userId)
+
+        {
+
+ 
+
+            using (SqlConnection con = new SqlConnection(Helper.constr))
+
+            {
+
+                //con.ConnectionString = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=truyum;Integrated Security=True;MultipleActiveResultSets=true";
+
+ 
+
+                con.Open();
+
+                SqlCommand com = new SqlCommand("SELECT * FROM menu_item WHERE me_id IN(SELECT ct_me_id FROM cart WHERE ct_us_id = @id); ", con);
+
+                SqlCommand comm = new SqlCommand("SELECT SUM(me_price)FROM menu_item WHERE me_id IN(SELECT ct_me_id FROM cart WHERE ct_us_id = @id)", con);
+
+                SqlParameter para = new SqlParameter();
+
+                com.Parameters.AddWithValue("@id", userId);
+
+                //com.Parameters.AddWithValue("@idn", userId);
+
+                comm.Parameters.AddWithValue("@id", userId);
+
+ 
+
+                MenuItem menu;
+
+                List<MenuItem> menulist = new List<MenuItem>();
+
+                Cart c = new Cart();
+
+                using (SqlDataReader dr = com.ExecuteReader())
+
+                {
+
+                    if (dr.HasRows == false)
+
+                    {
+
+ 
+
+                        throw new CartEmptyException();
+
+ 
+
+                    }
+
+                    else
+
+                    {
+
+ 
+
+                       
+
+                            while (dr.Read())
+
+                            {
+
+ 
+
+                                menu = new MenuItem();
+
+                                menu.Id = Convert.ToInt32(dr[0]);
+
+                                menu.Name = dr[1].ToString();
+
+                                menu.Price = float.Parse(dr[2].ToString());
+
+                                if (dr[3].ToString() == "Yes")
+
+                                    menu.Active = true;
+
+ 
+
+                                else
+
+                                    menu.Active = false;
+
+ 
+
+                                menu.DateOfLaunch = DateTime.Parse(dr[4].ToString());
+
+                                menu.Category = dr[5].ToString();
+
+ 
+
+                                if (dr[6].ToString() == "Yes")
+
+                                    menu.FreeDelivery = true;
+
+ 
+
+                                else
+
+                                    menu.FreeDelivery = false;
+
+ 
+
+                                menulist.Add(menu);
+
+ 
+
+                            }
+
+                            c.MenuItemList = menulist;
+
+                            c.Total = Convert.ToDouble(comm.ExecuteScalar().ToString());
+
+ 
+
+                        }
+
+                        con.Close();
+
+                        return c;
+
+                  
+
+                    }
+
+                  
+
+                
+
+                }
+
+ 
+
+ 
+
+          
+
+            }
+
+       
+
+            
+
+ 
+
+          
+
+  
+
+    
+
+ 
+
+        public void RemoveCartItem(long userId, long menuItemId)
+
+        {
+
+           
+
+                SqlConnection con = new SqlConnection(Helper.constr);
+
+            try
+
+            {
+
+                con.Open();
+
+                string str = "delete from cart where ct_us_id=@id and ct_me_id=@idp";
+
+                SqlCommand cmd = new SqlCommand(str, con);
+
+                cmd.Parameters.AddWithValue("@id", userId);
+
+                cmd.Parameters.AddWithValue("@idp", menuItemId);
+
+                cmd.ExecuteNonQuery();
+
+            }
+
+            catch (Exception ex)
+
+            {
+
+                Console.WriteLine(ex.Message);
+
+            }
+
+            finally
+
+            {
+
+                con.Close();
+
+            }
+
+        }
+
+           
+
+        
+
+ 
+
+        void ICartDao.GetAllCartItems(long userId)
+
+        {
+
+            //throw new NotImplementedException();
+
+        }
+
+    }
+
+ 
+
+}
+
+ 
+
+using System;
+
+using System.Collections.Generic;
+
+using System.Linq;
+
+using System.Text;
+
+using System.Threading.Tasks;
+
+using Com.Cognizant.Truyum.Model;
+
+using Com.Cognizant.Truyum.Dao;
+
+using Com.Cognizant.Truyum.Utility;
+
+using System.Configuration;
+
+ 
+
+namespace Com.Cognizant.Truyum.Dao
+
+{
+
+    public class CartDaoSqlTest
+
+    {
+
+        CartDaoSql CartDao;
+
+        public CartDaoSqlTest()
+
+        {
+
+            CartDao = new CartDaoSql();
+
+        }
+
+ 
+
+        public void TestAddCartItem()
+
+        {
+
+            CartDaoSql cdc = new CartDaoSql();
+
+            cdc.AddCartItem(2, 3);
+
+            Cart c = new Cart();
+
+            c = cdc.GetAllCartItems(2);
+
+            List<MenuItem> st = new List<MenuItem>();
+
+            foreach (MenuItem m in c.MenuItemList)
+
+            {
+
+                Console.WriteLine(m.ToString());
+
+            }
+
+            Console.WriteLine("\n\t\t Total Price" + string.Format("{0:C}", c.Total));
+
+            Console.WriteLine("\n\t");
+
+ 
+
+         
+
+        }
+
+        public void TestRemoveCartItem()
+
+        {
+
+            CartDao.RemoveCartItem(2,4);
+
+            Cart c = CartDao.GetAllCartItems(2);
+
+            foreach (MenuItem m in c.MenuItemList)
+
+            {
+
+                Console.WriteLine(m.ToString());
+
+            }
+
+            Console.WriteLine("\n\t\t Total Price " + string.Format("{0:C}", c.Total));
+
+            Console.WriteLine("\n\t");
+
+        }
+
+ 
+
+    }
+
+ 
+
+}
+
+ 
+
+using System;
+
+using System.Collections.Generic;
+
+using System.Linq;
+
+using System.Text;
+
+using System.Threading.Tasks;
+
+ 
+
+namespace Com.Cognizant.Truyum.Dao
+
+{
+
+   public  class Helper
+
+    {
+
+        public static string constr { get; set; }
+
+    }
+
+}
