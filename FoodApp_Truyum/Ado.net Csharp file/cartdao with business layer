@@ -1,0 +1,343 @@
+using System;
+
+using System.Collections.Generic;
+
+using System.Linq;
+
+using System.Text;
+
+using System.Threading.Tasks;
+
+using Com.Cognizant.Truyum.Model;
+
+using Com.Cognizant.Truyum.Utility;
+
+using System.Data;
+
+using System.Data.SqlClient;
+
+using Com.Cognizant.Truyum.Dao;
+
+ 
+
+namespace Com.Cognizant.Truyum.Dao
+
+{
+
+    public class CartDaoSql : ICartDao
+
+    {
+
+        public List<Cart> userCart = new List<Cart>();
+
+        public void AddCartItem(long userId, long menuItemId)
+
+        {
+
+            // throw new NotImplementedException();\
+
+ 
+
+            SqlConnection con = new SqlConnection(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=truyum;Integrated Security=True");
+
+            con.Open();
+
+ 
+
+ 
+
+            SqlCommand com = new SqlCommand("INSERT INTO [user](us_name) VALUES (@usid) SELECT * FROM[user] INSERT INTO cart VALUES(@usid,@meid)", con);
+
+            SqlParameter para = new SqlParameter();
+
+            com.Parameters.AddWithValue("@usid", userId);
+
+            com.Parameters.AddWithValue("@meid", menuItemId);
+
+            MenuItem menu = new MenuItem(); ;
+
+            com.ExecuteNonQuery();
+
+            con.Close();
+
+ 
+
+ 
+
+ 
+
+            int id = Convert.ToInt32(com.ExecuteScalar().ToString());
+
+            //if (id == null)
+
+            //    id = 1;
+
+ 
+
+            //SqlCommand AddCartCmd = new SqlCommand();
+
+            //AddCartCmd.Connection = con;
+
+            //AddCartCmd.CommandText = "insert into cart values(" + id + "," + userId + "," + menuItemId + ")";
+
+ 
+
+            //AddCartCmd.ExecuteNonQuery();
+
+            con.Close();
+
+ 
+
+        }
+
+ 
+
+        public Cart GetAllCartItems(long userId)
+
+        {
+
+            //throw new NotImplementedException();
+
+            double sum = 0;
+
+            userCart.Clear();
+
+            SqlConnection con = new SqlConnection(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=truyum;Integrated Security=True");
+
+            con.Open();
+
+            SqlCommand com = new SqlCommand("SELECT * FROM menu_item WHERE me_id IN(SELECT ct_me_id FROM cart WHERE ct_us_id = @id) SELECT * FROM menu_item WHERE me_id IN(SELECT ct_me_id FROM cart WHERE ct_us_id = @idn) ", con);
+
+            SqlCommand comm = new SqlCommand("SELECT SUM(me_price)FROM menu_item WHERE me_id IN(SELECT ct_me_id FROM cart WHERE ct_us_id = @id)", con);
+
+            SqlParameter para = new SqlParameter();
+
+            com.Parameters.AddWithValue("@id", userId);
+
+            com.Parameters.AddWithValue("@idn", userId);
+
+            comm.Parameters.AddWithValue("@id", userId);
+
+ 
+
+ 
+
+            SqlDataReader dr = com.ExecuteReader();
+
+            dr.Read();
+
+            List<MenuItem> menulst = new List<MenuItem>();
+
+            MenuItem menu;
+
+            while (dr.Read())
+
+            {
+
+                //Com.Cognizant.Truyum.Model.Cart cartRow = new Com.Cognizant.Truyum.Model.Cart();
+
+                menu = new MenuItem();
+
+              
+
+                menu.Id = Convert.ToInt32(dr[0].ToString());
+
+                menu.Name = dr[1].ToString();
+
+                menu.Price = float.Parse(dr[2].ToString());
+
+                sum = sum + menu.Price;
+
+                menu.Active = dr[3].ToString() == "YES" ? true : false;
+
+                menu.Category = dr[3].ToString();
+
+                menu.FreeDelivery = dr[6].ToString() == "YES" ? true : false;
+
+                menulst.Add(menu);
+
+            }
+
+            con.Close();
+
+            Cart c = new Cart(menulst, sum);
+
+            return c;
+
+ 
+
+           
+
+           
+
+ 
+
+        }
+
+ 
+
+        public void RemoveCartItem(long userId, long menuItemId)
+
+        {
+
+            //throw new NotImplementedException();
+
+            SqlConnection con = new SqlConnection(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=truyum;Integrated Security=True");
+
+            con.Open();
+
+            string str = " DELETE FROM cart WHERE ct_us_id=@uid AND ct_me_id=@mid";
+
+            SqlCommand cmd = new SqlCommand(str, con);
+
+            cmd.Parameters.AddWithValue("@uid", userId);
+
+            cmd.Parameters.AddWithValue("@mid", menuItemId);
+
+            cmd.ExecuteNonQuery();
+
+        }
+
+ 
+
+        void ICartDao.GetAllCartItems(long userId)
+
+        {
+
+            //throw new NotImplementedException();
+
+        }
+
+ 
+
+        //public static implicit operator CartDaoSql(CartDaoSqlTest v)
+
+        //{
+
+        //    throw new NotImplementedException();
+
+        //}
+
+    }
+
+}
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+using System;
+
+using System.Collections.Generic;
+
+using System.Linq;
+
+using System.Text;
+
+using System.Threading.Tasks;
+
+using Com.Cognizant.Truyum.Model;
+
+using Com.Cognizant.Truyum.Dao;
+
+using Com.Cognizant.Truyum.Utility;
+
+ 
+
+namespace Com.Cognizant.Truyum.Dao
+
+{
+
+   public  class CartDaoSqlTest
+
+    {
+
+ 
+
+            CartDaoSql CartDao;
+
+        public CartDaoSqlTest()
+
+        {
+
+            CartDao = new CartDaoSql();
+
+        }
+
+ 
+
+        public void TestAddCartItem()
+
+            {
+
+            CartDaoSql cdc = new CartDaoSql();
+
+            cdc.AddCartItem(1, 2);
+
+            Cart c = new Cart();
+
+            c = cdc.GetAllCartItems(1);
+
+            List<MenuItem> st = new List<MenuItem>();
+
+            foreach (MenuItem m in c.MenuItemList)
+
+            {
+
+                Console.WriteLine(m.ToString());
+
+            }
+
+            Console.WriteLine("\n\t\t Total Price" + string.Format("{0:C}", c.Total));
+
+            Console.WriteLine("\n\t");
+
+ 
+
+        }
+
+ 
+
+        public void TestRemoveCartItem()
+
+        {
+
+            CartDao.RemoveCartItem(1, 2);
+
+            Cart c = CartDao.GetAllCartItems(1);
+
+            foreach (MenuItem m in c.MenuItemList)
+
+            {
+
+                Console.WriteLine(m.ToString());
+
+            }
+
+            Console.WriteLine("\n\t\t Total Price " + string.Format("{0:C}", c.Total));
+
+            Console.WriteLine("\n\t");
+
+ 
+
+        }
+
+ 
+
+    }
+
+    }
+
+ 
+
+ 
