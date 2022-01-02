@@ -1,0 +1,149 @@
+<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="MoviesListAdmin.aspx.cs" Inherits="MovieCrusier.MoviesListAdmin" %>
+
+<%@ Import Namespace="Com.Cognizant.MovieCrusier.Utility" %>
+
+<%@ Import Namespace="Com.Cognizant.MovieCrusier.Model" %>
+
+<%@ Import Namespace="Com.Cognizant.MovieCruiser.Dao" %>
+
+ 
+
+ 
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/MoviesListAdmin.aspx?edit=yes">Movie</asp:HyperLink>
+
+    <br />
+
+&nbsp;
+
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false">
+
+            <Columns>
+
+                <asp:BoundField DataField="Id" HeaderText="Id" />
+
+                <asp:BoundField DataField="Title" HeaderText="Title" />
+
+                <asp:BoundField DataField="Boxoffice" HeaderText="Boxoffice" DataFormatString="{0:c}"/>
+
+                <asp:BoundField DataField="Active" HeaderText="Active" />
+
+                <asp:BoundField DataField="DateOfLaunch" HeaderText="DateOfLaunch" />
+
+                <asp:BoundField DataField="Genre" HeaderText="Genre" />
+
+                <asp:BoundField DataField="Hasteaser" HeaderText="Hasteaser" />
+
+                <asp:TemplateField HeaderText="Action" >
+
+               
+
+                <ItemTemplate>
+
+                    <asp:HyperLink ID="h1" NavigateUrl='<% #Eval("ID", "~/EditMovie.aspx?id={0}") %>' Text="Edit" runat="server"></asp:HyperLink>
+
+                       
+
+                </ItemTemplate>
+
+                        </asp:TemplateField>
+
+            </Columns>
+
+        </asp:GridView>
+
+ 
+
+</asp:Content>
+
+ 
+
+using System;
+
+using System.Collections.Generic;
+
+using System.Linq;
+
+using System.Web;
+
+using System.Web.UI;
+
+using System.Web.UI.WebControls;
+
+using Com.Cognizant.MovieCruiser.Dao;
+
+using Com.Cognizant.MovieCrusier.Dao;
+
+using Com.Cognizant.MovieCrusier.Model;
+
+using Com.Cognizant.MovieCrusier.Utility;
+
+ 
+
+ 
+
+namespace MovieCrusier
+
+{
+
+    public partial class MoviesListAdmin : System.Web.UI.Page
+
+    {
+
+        protected void Page_Load(object sender, EventArgs e)
+
+        {
+
+            if (!this.IsPostBack)
+
+            {
+
+                if (Request.QueryString["Edit"] == null)
+
+                {
+
+                    MovieDaoCollection obj = new MovieDaoCollection();
+
+                    Session["menu"] = obj;
+
+                    List<Com.Cognizant.MovieCrusier.Model.MovieItem> lst = obj.GetMovieItemListAdmin();
+
+                    GridView1.DataSource = lst;
+
+                    GridView1.DataBind();
+
+                }
+
+                else
+
+                {
+
+                    MovieDaoCollection ob = Session["menu"] as MovieDaoCollection;
+
+                    List <Com.Cognizant.MovieCrusier.Model.MovieItem> lst = ob.GetMovieItemListAdmin();
+
+                    GridView1.DataSource = lst;
+
+                    GridView1.DataBind();
+
+                }
+
+            }
+
+        }
+
+ 
+
+ 
+
+ 
+
+    }
+
+}
