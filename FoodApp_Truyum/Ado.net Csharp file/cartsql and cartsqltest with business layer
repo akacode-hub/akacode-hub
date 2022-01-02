@@ -1,0 +1,335 @@
+using System;
+
+using System.Collections.Generic;
+
+using System.Linq;
+
+using System.Text;
+
+using System.Threading.Tasks;
+
+using Com.Cognizant.Truyum.Model;
+
+using Com.Cognizant.Truyum.Utility;
+
+using System.Data;
+
+using System.Data.SqlClient;
+
+using Com.Cognizant.Truyum.Dao;
+
+ 
+
+namespace Com.Cognizant.Truyum.Dao
+
+{
+
+    public class CartDaoSql : ICartDao
+
+    {
+
+        public List<Cart> userCart = new List<Cart>();
+
+        public CartDaoSql()
+
+        {
+
+ 
+
+        }
+
+        public void AddCartItem(long userId, long menuItemId)
+
+        {
+
+            using (SqlConnection con = new SqlConnection())
+
+            {
+
+                con.ConnectionString = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=truyum;Integrated Security=True";
+
+                con.Open();
+
+                SqlCommand com = new SqlCommand("INSERT INTO [user](us_name) VALUES ('xyz') SELECT * FROM[user] INSERT INTO cart VALUES(@usid,@meid)", con);
+
+                SqlParameter para = new SqlParameter();
+
+                com.Parameters.AddWithValue("@usid", userId);
+
+                com.Parameters.AddWithValue("@meid", menuItemId);
+
+                MenuItem menu = new MenuItem(); ;
+
+                com.ExecuteNonQuery();
+
+                con.Close();
+
+            }
+
+ 
+
+ 
+
+        }
+
+       
+
+ 
+
+        public Cart GetAllCartItems(long userId)
+
+        {
+
+ 
+
+            using (SqlConnection con = new SqlConnection())
+
+            {
+
+                con.ConnectionString = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=truyum;Integrated Security=True;MultipleActiveResultSets=true";
+
+                con.Open();
+
+                SqlCommand com = new SqlCommand("SELECT * FROM menu_item WHERE me_id IN(SELECT ct_me_id FROM cart WHERE ct_us_id = @id); ", con);
+
+                SqlCommand comm = new SqlCommand("SELECT SUM(me_price)FROM menu_item WHERE me_id IN(SELECT ct_me_id FROM cart WHERE ct_us_id = @id)", con);
+
+                SqlParameter para = new SqlParameter();
+
+                com.Parameters.AddWithValue("@id", userId);
+
+                //com.Parameters.AddWithValue("@idn", userId);
+
+                comm.Parameters.AddWithValue("@id", userId);
+
+                MenuItem menu;
+
+                List<MenuItem> menulist = new List<MenuItem>();
+
+                Cart c = new Cart();
+
+                using (SqlDataReader dr = com.ExecuteReader())
+
+                {
+
+                    if (dr.HasRows)
+
+                    {
+
+                        while (dr.Read())
+
+                        {
+
+ 
+
+                            menu = new MenuItem();
+
+                            menu.Id = Convert.ToInt32(dr[0]);
+
+                            menu.Name = dr[1].ToString();
+
+                            menu.Price = float.Parse(dr[2].ToString());
+
+                            if (dr[3].ToString() == "Yes")
+
+                                menu.Active = true;
+
+ 
+
+                            else
+
+                                menu.Active = false;
+
+ 
+
+                            menu.DateOfLaunch = DateTime.Parse(dr[4].ToString());
+
+                            menu.Category = dr[5].ToString();
+
+ 
+
+                            if (dr[6].ToString() == "Yes")
+
+                                menu.FreeDelivery = true;
+
+ 
+
+                            else
+
+                                menu.FreeDelivery = false;
+
+ 
+
+                            menulist.Add(menu);
+
+ 
+
+                        }
+
+                        c.MenuItemList = menulist;
+
+                        c.Total = (Convert.ToDouble(comm.ExecuteScalar().ToString()));
+
+                    }
+
+                    return c;
+
+                }
+
+ 
+
+            }
+
+ 
+
+ 
+
+            throw new NotImplementedException();
+
+        }
+
+ 
+
+        public void RemoveCartItem(long userId, long menuItemId)
+
+        {
+
+            SqlConnection con = new SqlConnection(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=truyum;Integrated Security=True");
+
+            con.Open();
+
+            string str = "delete from cart where ct_us_id=@id and ct_me_id=@idp";
+
+            SqlCommand cmd = new SqlCommand(str, con);
+
+            cmd.Parameters.AddWithValue("@id", userId);
+
+            cmd.Parameters.AddWithValue("@idp", menuItemId);
+
+            cmd.ExecuteNonQuery();
+
+        }
+
+ 
+
+        void ICartDao.GetAllCartItems(long userId)
+
+        {
+
+            throw new NotImplementedException();
+
+        }
+
+    }
+
+ 
+
+}
+
+ 
+
+ 
+
+ 
+
+using System;
+
+using System.Collections.Generic;
+
+using System.Linq;
+
+using System.Text;
+
+using System.Threading.Tasks;
+
+using Com.Cognizant.Truyum.Model;
+
+using Com.Cognizant.Truyum.Dao;
+
+using Com.Cognizant.Truyum.Utility;
+
+ 
+
+namespace Com.Cognizant.Truyum.Dao
+
+{
+
+    public class CartDaoSqlTest
+
+    {
+
+        CartDaoSql CartDao;
+
+        public CartDaoSqlTest()
+
+        {
+
+            CartDao = new CartDaoSql();
+
+        }
+
+ 
+
+        public void TestAddCartItem()
+
+        {
+
+            CartDaoSql cdc = new CartDaoSql();
+
+            cdc.AddCartItem(2, 3);
+
+            Cart c = new Cart();
+
+            c = cdc.GetAllCartItems(2);
+
+            List<MenuItem> st = new List<MenuItem>();
+
+            foreach (MenuItem m in c.MenuItemList)
+
+            {
+
+                Console.WriteLine(m.ToString());
+
+            }
+
+            Console.WriteLine("\n\t\t Total Price" + string.Format("{0:C}", c.Total));
+
+            Console.WriteLine("\n\t");
+
+ 
+
+         
+
+        }
+
+        public void TestRemoveCartItem()
+
+        {
+
+            CartDao.RemoveCartItem(2,4);
+
+            Cart c = CartDao.GetAllCartItems(2);
+
+            foreach (MenuItem m in c.MenuItemList)
+
+            {
+
+                Console.WriteLine(m.ToString());
+
+            }
+
+            Console.WriteLine("\n\t\t Total Price " + string.Format("{0:C}", c.Total));
+
+            Console.WriteLine("\n\t");
+
+        }
+
+ 
+
+    }
+
+ 
+
+}
+
+ 
