@@ -1,0 +1,8 @@
+This project is a full stack project for the app based on the movie booking  app . It helps the customer to add the movie type of their choice into the cart , Edit the movie 
+option such as add to watch list and remove from the watch list . This also calculates the sum of bills that are there in the final list of purchase . It also allows you to add new 
+movie items in the list based upon the customer choices and can also caluculate the overall renewed cost . Similar functionality is there for the removal of the movie in the final 
+bill made for the customers .
+Folders :
+           -->Ado.net/Asp.net and c sharp code ( Logic and Backend of the program )
+           -->Middle layer and Business Layer (MSSQL SEVER and Stored procedures )
+           -->Html,css, Bootstrap,Javascript ( Frontend of the program ) 
