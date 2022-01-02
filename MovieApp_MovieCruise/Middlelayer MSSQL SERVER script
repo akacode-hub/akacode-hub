@@ -1,0 +1,115 @@
+-- Include table data insertion, updation, deletion and select scripts
+
+USE MovieCruiser;
+
+GO
+
+--1.   View Movie Item List Admin (MYUC001)
+
+--a.   Frame insert scripts to add data into movie_item table. Refer View Movie Item List Admin screen shot from Web UI Specification for sample data.
+
+INSERT INTO movie_item VALUES('Avatar',CAST('2787965087.00' AS FLOAT),'YES','2017-03-15','Science Fiction','Yes'),
+
+                            ('The Avengers',CAST('1518812988.00' AS FLOAT),'YES','2017-12-23','Superhero','No'),
+
+                            ('Titanic',CAST('2187463944.00' AS FLOAT),'YES','2017-08-21','Romance','No'),
+
+                            ('Jurassic World',CAST('1671713208.00' AS FLOAT),'NO','2017-07-02','Science Fiction','Yes'),
+
+                            ('Avengers: End Game',CAST('2750765348.00' AS FLOAT),'YES','2022-11-02','Superhero','Yes');
+
+--b.   Frame SQL query to get all movie items
+
+       SELECT me_id,me_title,me_boxoffice,me_active,me_date_of_launch,me_genre,me_has_teaser FROM movie_item;
+
+ 
+
+--2.   View Movie Item List Customer (MYUC002)
+
+--a.   Frame SQL query to get all movie items which after launch date and is active.
+
+       SELECT me_id,me_title,me_boxoffice,me_active,me_date_of_launch,me_genre,me_has_teaser FROM movie_item
+
+          WHERE me_date_of_launch <GETDATE() AND me_active ='Yes';
+
+--3.   Edit Movie Item (TYUC003)
+
+--a.   Frame SQL query to get a menu items based on Movie Item Id
+
+       SELECT me_id,me_title,me_boxoffice,me_active,me_date_of_launch,me_genre,me_has_teaser FROM movie_item WHERE me_id=6;
+
+--b.   Frame update SQL menu_items table to update all the columns values based on Menu Item Id
+
+      UPDATE dbo.movie_item
+
+      SET me_title='Tom and Jerry',
+
+          me_boxoffice='70',
+
+          me_active='NO',
+
+          me_date_of_launch='2019-02-09',
+
+          me_genre='cartoon',
+
+          me_has_teaser='Yes'
+
+          WHERE me_id=7;
+
+         SELECT me_id,me_title,me_boxoffice,me_active,me_date_of_launch,me_genre,me_has_teaser FROM movie_item;
+
+--4.   Add to Favourites (MYUC004)
+
+--a.   Frame insert scripts for adding data into user and favourite tables.In user table create two users. Once user will not have any entries in favourite, while the other will have at least 3 items in the favourite
+
+      INSERT into [user] VALUES('abc'),('xyz');
+
+      SELECT us_id,us_name FROM [user];
+
+      INSERT into favourites VALUES(1,6),(2,8),(2,9);
+
+      SELECT ct_id,ct_us_id,ct_me_id FROM favourites;
+
+--5.     View Favourite (MYUC005)
+
+--a.   Frame SQL query to get all movie items in a particular user’s favourite
+
+      SELECT me_id,me_title,me_boxoffice,me_active,me_date_of_launch,me_genre,me_has_teaser
+
+      FROM movie_item
+
+      JOIN favourites ON movie_item.me_id=favourites.ct_me_id
+
+      JOIN [user] u ON u.us_id=favourites.ct_us_id
+
+      WHERE u.us_id=2;
+
+ 
+
+--b.   Frame SQL query to get the total price of all movie items in a particular user’s favourites
+
+      select sum(me_boxoffice)
+
+FROM movie_item  join favourites 
+
+ON me_id=ct_me_id join [user] 
+
+ON us_id=ct_us_id
+
+WHERE us_id=2
+
+GROUP by us_id;
+
+ 
+
+--6.   Remove Item from Favourites (MYUC006)
+
+--a.   Frame SQL query to remove a menu items from favourites based on User Id and Movie item Id
+
+       DELETE FROM favourites WHERE ct_us_id=1 AND ct_me_id=6;
+
+          SELECT ct_id,ct_us_id,ct_me_id FROM favourites;
+
+                
+
+ 
