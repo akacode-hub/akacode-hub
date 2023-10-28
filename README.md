@@ -11,10 +11,10 @@ You can click the Preview link to take a look at your changes.
 
 <!-- section - intro -->  
 ### A Technology driven person and Data Enthusiast, Software Development Engineer and Machine Learning Engineer 💻❤️
-Welcome Guys! Here you'll find a collection of my projects, skills, and experiences as a passionate Cpmouter Sceince Ethusiast . I'm currently seeking a full-time SDE or ML related opportunity starting on immediate basis. Feel free to explore and get in touch!
+Welcome Guys! Here you'll find a collection of my projects, skills, and experiences as a passionate Computer Science Ethusiast . I'm currently seeking a full-time **SDE or ML** related opportunity starting on immediate basis. Feel free to explore and get in touch!
 
 ## About Me
-Hi, I'm Akanksha Agnihotri, a skilled **Computer Engineer** specializing in **Machine Learning and Algorithms**. I recently graduated with a **Master's degree in Computer Engineering from Northeastern University**. I enjoy working on diverse projects and have experience in web development, database management, Data Modeling & Pipleline building for large scale distributed systems, Machine Learning & Deep Learning and software engineering. My goal is to leverage my skills and knowledge to create innovative and efficient solutions which helps industry to achieve goals .I have rich set of transferable skillsets  in applications ranging from fields as diverse as Healthcare, Media apps, Energy and Utilities, GIS, Payment , Supply chain logistics, e-commerce,  Information and Technology domains such as ERP applications through my research internships and 2-3 years industry experience .
+Hi, I'm Akanksha Agnihotri, a skilled **Computer Engineer** specializing in **Machine Learning and Algorithms**. I recently graduated with a **Master's degree in Computer Engineering from Northeastern University**. I enjoy working on diverse projects and have experience in **web development, database management, Data Modeling & Pipleline building for large scale distributed systems, Machine Learning & Deep Learning and software engineering**. My goal is to leverage my skills and knowledge to create innovative and efficient solutions which helps industry to achieve goals .I have rich set of transferable skillsets  in applications ranging from fields as diverse as **Healthcare, Media apps, Energy and Utilities, GIS, Payment , Supply chain logistics, e-commerce,  Information and Technology domains such as ERP applications** through my **research internships and 2-4 years industry experience** .
 
 ### aboutMe.js
 
@@ -27,24 +27,34 @@ const aka = {
     Programming_Languages: ["Python", " Core Java", "C#", "C/C++", "Javascript"],
     askMeAbout: ["web dev", "front end", "back end", "full stack", "data analytics", "data engineering", "machine learning"," artificial intelligence"],
     technologies: {
-        Data Science : [ "Keras", "TensorFlow", "Scikit learn", "SciPy", "Seaborn", "SonarQube analytics", "Pytorch", "NumPy", "CUDA","Matplotlib"]
-        Data Engineering :["Spark" , "MapReduce" , "Hadoop", "Hive" , "Pig" , "Pyspark" , "SparkSQL" ,"MLops","ETL SSIS"]
-        Databases: ["MySQL","SQL Server", "PostgreSQL", "MongoDB", "Neo4.js/Cypher","Employee Data Warehouse"],
-        Data Vizualisation : ["Tableau","Dash","Plotly","Power BI","Mkdocs","Pandas Profiling"],
-        Machine Learning :["K Means clustering , K fold cross validation , "Regressions","MLP","Random Forest","XGBOOST","Desicion Trees","SVM", "Gradient Boosting 
-        Tree","Naive", "k nearest neighbours", "supervised & unsupervised learning" , "reinforcement learning" ,"Semi-supervised learning","Clustering and classification"],
-        Deep Learning :["GPT-3","Bert","Albert","LLM","Resnet","RNN","CNN","DNN","Generative AI"," NTKL corpus","Tokenization","Matrix Factorization","LSTM","Open AI",
-                         "Hugging Face","LLaMa","Transformwrs","Encoders, Decoders"],
+        Data Science : ["Keras", "TensorFlow", "Scikit learn", "SciPy", "Seaborn", "SonarQube analytics", "Pytorch", "NumPy", "CUDA","Matplotlib"],
+        Data Engineering :["Spark" , "MapReduce" , "Hadoop", "Hive" , "Pig" , "Pyspark" , "SparkSQL" ,"MLops", "ETL SSIS"],
+        Databases: ["MySQL","SQL Server", "PostgreSQL", " NOSQL-MongoDB", "Neo4.js/Cypher", "Employee Data Warehouse"],
+        Data Vizualisation : ["Tableau", "Dash", "Plotly", "Power BI", "Mkdocs", "Pandas Profiling"],
+        Machine Learning :{
+                          Models :["K Means clustering , "K fold cross validation" , "Regressions", "MLP", "Random Forest", "XGBOOST", "Desicion Trees", "SVM", "Gradient 
+                                   Boosting Tree", "Naive Bias", "k nearest neighbours"],
+                          Types: ["supervised & unsupervised learning" , "Reinforcement learning" , "Semi-supervised learning", "Clustering and classification"]
+                          },
+        Deep Learning :{
+                        NLP: ["GPT-3","Bert","Albert","LLM"," NTKL corpus","Tokenization","Matrix Factorization","LSTM","Open AI",
+                         "Hugging Face","LLaMa","Transformers","Encoders, Decoders"],
+                        MLP : ["Resnet","RNN","CNN","DNN","Generative AI"]
+                       },
         Metrics Evaluation:["F1 score","Recall","Precision","Confusion Metrics","MAP","Blue score","Bert score","True Positive","False Positive"],
-        Web Technology :[ "ADO.NET", "ASP.NET", "Agile", "Node.js", "Devops", "Model View Controller(MVC)","SpringBoot"],
+        Web Technology :[ "ADO.NET", "ASP.NET", "Agile", "Node.js", "Devops", "Model View Controller(MVC)", "SpringBoot"],
         FrontEnd: {
             languages: ["Bootstrap", "html", "css","Json","XML","AJAX","Angularjs"],
             js: ["React", "Angular", "Vue","GraphQL","Rest APIs", "PostMan API"]
         },
-       Delpoyment:["Gitlab","CI/CD","Docker","Kubernetes","NGC Nvidia", "JIRA", "Confluence", "Atlassian"],
-       Cloud:["AWS [EC2,S3,Lambda,EMR,Sagemaker]" , "Azure Kuberenets", "Heroku"],
+       Delpoyment:["Gitlab", "CI/CD", "Docker", "Kubernetes", "NGC Nvidia", "JIRA", "Confluence", "Atlassian"],
+       Cloud:{
+               AWS : ["EC2" , "S3" , "Lambda" , "EMR" , "Sagemaker"],
+               Azure : ["Kubernetes", "Devops"],
+               Heroku
+              },
        Testing:["Speck flow", "Selenium" , "Cucumber", "Gherkin"],
-       Others:["Powrshell","Unix/Bash","Linux","Powerpoint","Excel"],
+       Others:["Powershell","Unix/Bash","Linux","Powerpoint","Excel"],
     }
 };
 ```
@@ -57,10 +67,16 @@ const aka = {
 
 ⚡️ Programer Analyst - [**Cognizant Technology Solution**](https://www.cognizant.com/us/en)
 
+⚡️ Research and Development Intern as student - [**Defense Research and Development Organization**](https://www.drdo.gov.in/)
+
 ## Certifications:
 
-[**Certified AWS Cloud Architect**]
-
+[**Aws Essential Training for Developers - 2019**](Cred: ASmA5Yka1RDyORMBgLZPbiCZoGy)
+[**Python for data Science and Machine Learning Boot camp- Udemy**](Cred : UC-68d9671b-7ff1-488e-b22b-ae5ca383fe7f)
+[**Jr. Developer /App Analyst Application Development and Application Value Managment - Knowledge Based Assessment- Cognizant**](Cred : diploma_d5da0905-c8554762-adc-1cb63d60c849)
+[**Agile Software Development , Six Sigma and DEVOPS assessment**](Cred : 24a37e26-744b-4831-9ec0-d5734afcf26)
+[**Think Like a leader with Brain Tracy-Udemy**](Cred : ba115559-51a14adb-b8Ba-e385c24e8dae)
+[**Core Java**]
 
 ## 📫 Get in touch
 
