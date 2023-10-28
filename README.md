@@ -77,7 +77,7 @@ const aka = {
 
 🌱 [**Jr. Developer /App Analyst Application Development and Application Value Managment - Knowledge Based Assessment- Cognizant**](Cred : diploma_d5da0905-c8554762-adc-1cb63d60c849)
 
-🌱 [**Agile Software Development , Six Sigma and DEVOPS assessment**](Cred : 24a37e26-744b-4831-9ec0-d5734afcf26)
+🌱 [**Agile Software Development , Six Sigma and DEVOPS - Cognizant**](Cred : 24a37e26-744b-4831-9ec0-d5734afcf26)
 
 🌱 [**Think Like a leader with Brain Tracy-Udemy**](Cred : ba115559-51a14adb-b8Ba-e385c24e8dae)
 
