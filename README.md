@@ -71,12 +71,17 @@ const aka = {
 
 ## Certifications:
 
-[**Aws Essential Training for Developers - 2019**](Cred: ASmA5Yka1RDyORMBgLZPbiCZoGy)
-[**Python for data Science and Machine Learning Boot camp- Udemy**](Cred : UC-68d9671b-7ff1-488e-b22b-ae5ca383fe7f)
-[**Jr. Developer /App Analyst Application Development and Application Value Managment - Knowledge Based Assessment- Cognizant**](Cred : diploma_d5da0905-c8554762-adc-1cb63d60c849)
-[**Agile Software Development , Six Sigma and DEVOPS assessment**](Cred : 24a37e26-744b-4831-9ec0-d5734afcf26)
-[**Think Like a leader with Brain Tracy-Udemy**](Cred : ba115559-51a14adb-b8Ba-e385c24e8dae)
-[**Core Java**]
+🌱 [**Aws Essential Training for Developers - 2019**](Cred: ASmA5Yka1RDyORMBgLZPbiCZoGy)
+
+🌱 [**Python for data Science and Machine Learning Boot camp- Udemy**](Cred : UC-68d9671b-7ff1-488e-b22b-ae5ca383fe7f)
+
+🌱 [**Jr. Developer /App Analyst Application Development and Application Value Managment - Knowledge Based Assessment- Cognizant**](Cred : diploma_d5da0905-c8554762-adc-1cb63d60c849)
+
+🌱 [**Agile Software Development , Six Sigma and DEVOPS assessment**](Cred : 24a37e26-744b-4831-9ec0-d5734afcf26)
+
+🌱 [**Think Like a leader with Brain Tracy-Udemy**](Cred : ba115559-51a14adb-b8Ba-e385c24e8dae)
+
+🌱 [**Core Java**]
 
 ## 📫 Get in touch
 
