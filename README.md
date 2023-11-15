@@ -18,7 +18,7 @@ Hi, I'm Akanksha Agnihotri, a skilled **Computer Engineer** specializing in **Ma
 
 ### aboutMe.js
 
-```javascript
+
 Overview of my Skillsets 
     pronouns: "she" | "her",
     Programming_Languages: ["Python", " Core Java", "C#", "C/C++", "Javascript"],
@@ -55,7 +55,7 @@ Overview of my Skillsets
 <p>
 <img alt="React" src="https://img.shields.io/badge/-React-45b8d8?style=flat-square&logo=react&logoColor=white" />
 </p>
-```
+
 ## Work Experience 👩‍💼
 ⚡️ Graduate Teaching Assistant: Machine Learning and Pattern Recognization - [**Electrical and Computer Engineering, Northeastern University**](https://ece.northeastern.edu/)
 
