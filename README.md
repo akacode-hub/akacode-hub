@@ -85,3 +85,4 @@ Overview of my Skillsets
 
 <a href="mailto:akanksha.agni18@gmail.com"><img alt="Gmail" src="https://img.shields.io/badge/Gmail-D14836?style=flat&logo=gmail&logoColor=white" /></a> &nbsp;
 ![](https://komarev.com/ghpvc/?username=akacode-hub&label=PROFILE+VIEWS)
+[![LeetCode](https://img.shields.io/badge/dynamic/json?style=plastic&labelColor=black&color=%23ffa116&label=Solved&query=solvedOverTotal&url=https%3A%2F%2Fleetcode-badge.vercel.app%2Fapi%2Fusers%2Fashleymavericks&logo=leetcode&logoColor=yellow)](https://leetcode.com/minzey/)
