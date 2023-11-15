@@ -52,8 +52,7 @@ Overview of my Skillsets
               },
        Testing:["Speck flow", "Selenium" , "Cucumber", "Gherkin"],
        Others:["Powershell","Unix/Bash","Linux","Powerpoint","Excel"],
-    }
-};
+
 ```
 ## Work Experience 👩‍💼
 ⚡️ Graduate Teaching Assistant: Machine Learning and Pattern Recognization - [**Electrical and Computer Engineering, Northeastern University**](https://ece.northeastern.edu/)
