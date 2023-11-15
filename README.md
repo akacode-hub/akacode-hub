@@ -17,8 +17,7 @@ Welcome Guys! Here you'll find a collection of my projects, skills, and experien
 Hi, I'm Akanksha Agnihotri, a skilled **Computer Engineer** specializing in **Machine Learning and Algorithms**. I recently graduated with a **Master's degree in Computer Engineering from Northeastern University**. I enjoy working on diverse projects and have experience in **web development, database management, Data Modeling & Pipleline building for large scale distributed systems, Machine Learning & Deep Learning and software engineering**. My goal is to leverage my skills and knowledge to create innovative and efficient solutions which helps industry to achieve goals .I have rich set of transferable skillsets  in applications ranging from fields as diverse as **Healthcare, Media apps, Energy and Utilities, GIS, Payment , Supply chain logistics, e-commerce,  Information and Technology domains such as ERP applications** through my **research internships and 2-4 years industry experience** .
 
 ### aboutMe.js
-
-
+```
 Overview of my Skillsets 
     pronouns: "she" | "her",
     Programming_Languages: ["Python", " Core Java", "C#", "C/C++", "Javascript"],
@@ -52,9 +51,7 @@ Overview of my Skillsets
               },
        Testing:["Speck flow", "Selenium" , "Cucumber", "Gherkin","Splunk"],
        Others:["Powershell","Unix/Bash","Linux","Powerpoint","Excel"],
-<p>
-<img alt="React" src="https://img.shields.io/badge/-React-45b8d8?style=flat-square&logo=react&logoColor=white" />
-</p>
+```
 
 ## Work Experience 👩‍💼
 ⚡️ Graduate Teaching Assistant: Machine Learning and Pattern Recognization - [**Electrical and Computer Engineering, Northeastern University**](https://ece.northeastern.edu/)
