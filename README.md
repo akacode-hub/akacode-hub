@@ -50,7 +50,7 @@ Overview of my Skillsets
                Azure : ["Kubernetes", "Devops"],
                Heroku
               },
-       Testing:["Speck flow", "Selenium" , "Cucumber", "Gherkin"],
+       Testing:["Speck flow", "Selenium" , "Cucumber", "Gherkin","Splunk"],
        Others:["Powershell","Unix/Bash","Linux","Powerpoint","Excel"],
 
 ```
