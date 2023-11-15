@@ -52,7 +52,9 @@ Overview of my Skillsets
               },
        Testing:["Speck flow", "Selenium" , "Cucumber", "Gherkin","Splunk"],
        Others:["Powershell","Unix/Bash","Linux","Powerpoint","Excel"],
+<p>
 <img alt="React" src="https://img.shields.io/badge/-React-45b8d8?style=flat-square&logo=react&logoColor=white" />
+</p>
 ```
 ## Work Experience 👩‍💼
 ⚡️ Graduate Teaching Assistant: Machine Learning and Pattern Recognization - [**Electrical and Computer Engineering, Northeastern University**](https://ece.northeastern.edu/)
