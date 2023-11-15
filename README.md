@@ -19,14 +19,11 @@ Hi, I'm Akanksha Agnihotri, a skilled **Computer Engineer** specializing in **Ma
 ### aboutMe.js
 
 ```javascript
-<script>
 Overview of my Skillsets 
-</script>
-const aka = {
     pronouns: "she" | "her",
     Programming_Languages: ["Python", " Core Java", "C#", "C/C++", "Javascript"],
-    askMeAbout: ["web dev", "front end", "back end", "full stack", "data analytics", "data engineering", "machine learning"," artificial intelligence"],
-    technologies: {
+    Fields i know : ["web dev", "front end", "back end", "full stack", "data analytics", "data engineering", "machine learning"," artificial intelligence"],
+    Technologies: {
         Data Science : ["Keras", "TensorFlow", "Scikit learn", "SciPy", "Seaborn", "SonarQube analytics", "Pytorch", "NumPy", "CUDA","Matplotlib"],
         Data Engineering :["Spark" , "MapReduce" , "Hadoop", "Hive" , "Pig" , "Pyspark" , "SparkSQL" ,"MLops", "ETL SSIS"],
         Databases: ["MySQL","SQL Server", "PostgreSQL", " NOSQL-MongoDB", "Neo4.js/Cypher", "Employee Data Warehouse"],
