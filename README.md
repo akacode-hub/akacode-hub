@@ -14,7 +14,7 @@ You can click the Preview link to take a look at your changes.
 Welcome Guys! Here you'll find a collection of my projects, skills, and experiences as a passionate Computer Science Enthusiast . Any innovative opportunities related to **ML in SDE** has always intrigued me. Feel free to explore and get in touch!
 
 ## About Me
-Hi, I'm Akanksha Agnihotri, a skilled **Computer Engineer** specializing in **Machine Learning and Algorithms**. I recently graduated with a **Master's degree in Computer Engineering from Northeastern University**. I enjoy working on diverse projects and have experience in **Data Modeling & Pipleline building for large scale distributed systems, Machine Learning & Deep Learning and software engineering**. My goal is to leverage my skills and knowledge to create innovative and efficient solutions which helps industry to achieve goals .I have rich set of transferable skillsets  in applications ranging from fields as diverse as **Healthcare, Media apps, Energy and Utilities, GIS, Payment , Supply chain logistics, e-commerce,  Information and Technology domains** through my **research internships and 2-4 years industry experience** .
+Hi, I'm Akanksha Agnihotri, a skilled **Computer Engineer** specializing in **Machine Learning and Algorithms**. I recently graduated with a **Master's degree in Computer Engineering from Northeastern University**. I enjoy working on diverse projects and have experience in **GPT APIs, Data Modeling & Pipleline building for large scale distributed systems, Machine Learning & Deep Learning and software engineering**. My goal is to leverage my skills and knowledge to create innovative and efficient solutions which helps industry to achieve goals .I have rich set of transferable skillsets  in applications ranging from fields as diverse as **Healthcare, Media apps, Energy and Utilities, GIS, Payment , Supply chain logistics, e-commerce,  Information and Technology domains** through my **research internships and 2-4 years industry experience** .
 
 ### aboutMe.js
 ```
@@ -60,7 +60,7 @@ Overview of my Skillsets
 
 ⚡️ Reserach and Development Intern - [**Haemonetics Corporation**](https://www.haemonetics.com/)
 
-⚡️ Graduate Research Assistant - [**A small project with a professor from Synergistic Lab(SMILELAB) for Machine Learning**](https://web.northeastern.edu/smilelab/)
+⚡️ Graduate Research Assistant - [**A project with a professor from Synergistic Lab(SMILELAB) for Machine Learning**](https://web.northeastern.edu/smilelab/)
 
 ⚡️ Programer Analyst - [**Cognizant Technology Solution**](https://www.cognizant.com/us/en)
 
