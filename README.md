@@ -11,17 +11,17 @@ You can click the Preview link to take a look at your changes.
 
 <!-- section - intro -->  
 ### A Technology driven person and Data Enthusiast, Software Development Engineer and Machine Learning Engineer 💻❤️
-Welcome Guys! Here you'll find a collection of my projects, skills, and experiences as a passionate Computer Science Ethusiast . I'm currently seeking a full-time **SDE or ML** related opportunity starting on immediate basis. Feel free to explore and get in touch!
+Welcome Guys! Here you'll find a collection of my projects, skills, and experiences as a passionate Computer Science Enthusiast . Any innovative opportunities related to **ML in SDE** has always intrigued me. Feel free to explore and get in touch!
 
 ## About Me
-Hi, I'm Akanksha Agnihotri, a skilled **Computer Engineer** specializing in **Machine Learning and Algorithms**. I recently graduated with a **Master's degree in Computer Engineering from Northeastern University**. I enjoy working on diverse projects and have experience in **web development, database management, Data Modeling & Pipleline building for large scale distributed systems, Machine Learning & Deep Learning and software engineering**. My goal is to leverage my skills and knowledge to create innovative and efficient solutions which helps industry to achieve goals .I have rich set of transferable skillsets  in applications ranging from fields as diverse as **Healthcare, Media apps, Energy and Utilities, GIS, Payment , Supply chain logistics, e-commerce,  Information and Technology domains such as ERP applications** through my **research internships and 2-4 years industry experience** .
+Hi, I'm Akanksha Agnihotri, a skilled **Computer Engineer** specializing in **Machine Learning and Algorithms**. I recently graduated with a **Master's degree in Computer Engineering from Northeastern University**. I enjoy working on diverse projects and have experience in **Data Modeling & Pipleline building for large scale distributed systems, Machine Learning & Deep Learning and software engineering**. My goal is to leverage my skills and knowledge to create innovative and efficient solutions which helps industry to achieve goals .I have rich set of transferable skillsets  in applications ranging from fields as diverse as **Healthcare, Media apps, Energy and Utilities, GIS, Payment , Supply chain logistics, e-commerce,  Information and Technology domains** through my **research internships and 2-4 years industry experience** .
 
 ### aboutMe.js
 ```
 Overview of my Skillsets 
     pronouns: "she" | "her",
     Programming_Languages: ["Python", " Core Java", "C#", "C/C++", "Javascript"],
-    Fields i know : ["web dev", "front end", "back end", "full stack", "data analytics", "data engineering", "machine learning"," artificial intelligence"],
+    Fields i know : ["web dev", "front end", "back end", "full stack", "data analytics", "data engineering", "machine learning"," artificial intelligence", "deep learning"],
     Technologies: {
         Data Science : ["Keras", "TensorFlow", "Scikit learn", "SciPy", "Seaborn", "SonarQube analytics", "Pytorch", "NumPy", "CUDA","Matplotlib"],
         Data Engineering :["Spark" , "MapReduce" , "Hadoop", "Hive" , "Pig" , "Pyspark" , "SparkSQL" ,"MLops", "ETL SSIS"],
@@ -54,17 +54,20 @@ Overview of my Skillsets
 ```
 
 ## Work Experience 👩‍💼
+⚡️ Software Developement Engineer - [**Moderna**](https://www.modernatx.com/en-US)
+
 ⚡️ Graduate Teaching Assistant: Machine Learning and Pattern Recognization - [**Electrical and Computer Engineering, Northeastern University**](https://ece.northeastern.edu/)
 
 ⚡️ Reserach and Development Intern - [**Haemonetics Corporation**](https://www.haemonetics.com/)
 
-⚡️ Graduate Research Assistant - [**Synergistic Lab(SMILELAB) for Machine Learning**](https://web.northeastern.edu/smilelab/)
+⚡️ Graduate Research Assistant - [**A small project with a professor from Synergistic Lab(SMILELAB) for Machine Learning**](https://web.northeastern.edu/smilelab/)
 
 ⚡️ Programer Analyst - [**Cognizant Technology Solution**](https://www.cognizant.com/us/en)
 
 ⚡️ Research and Development Intern as student - [**Defense Research and Development Organization**](https://www.drdo.gov.in/)
 
 ## Certifications:
+🌱[**LLM Developer- 2022**]- **Nvidia**
 
 🌱 [**Aws Essential Training for Developers - 2019**](Cred: ASmA5Yka1RDyORMBgLZPbiCZoGy)
 
